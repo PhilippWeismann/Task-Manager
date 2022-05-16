@@ -1,5 +1,5 @@
 using LiveCharts;
-using LiveCharts.Wpf;
+using LiveCharts.WinForms;
 
 namespace Task_Manager
 {
