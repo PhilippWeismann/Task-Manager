@@ -32,6 +32,7 @@
             this.cTaskName = new System.Windows.Forms.ColumnHeader();
             this.cMemory = new System.Windows.Forms.ColumnHeader();
             this.cPriority = new System.Windows.Forms.ColumnHeader();
+            this.bwCurrentNumberOfProcesses = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // livTasks
@@ -80,5 +81,6 @@
         private ColumnHeader cTaskName;
         private ColumnHeader cMemory;
         private ColumnHeader cPriority;
+        private System.ComponentModel.BackgroundWorker bwCurrentNumberOfProcesses;
     }
 }
