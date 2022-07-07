@@ -32,7 +32,8 @@
             this.cTaskName = new System.Windows.Forms.ColumnHeader();
             this.cMemory = new System.Windows.Forms.ColumnHeader();
             this.cPriority = new System.Windows.Forms.ColumnHeader();
-            this.bwCurrentNumberOfProcesses = new System.ComponentModel.BackgroundWorker();
+            this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // livTasks
@@ -62,16 +63,31 @@
             // 
             this.cPriority.Text = "Priority";
             // 
+            // bwRefreshTasks
+            // 
+            this.bwRefreshTasks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRefreshTasks_DoWork);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(552, 175);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 303);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.livTasks);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,6 +97,7 @@
         private ColumnHeader cTaskName;
         private ColumnHeader cMemory;
         private ColumnHeader cPriority;
-        private System.ComponentModel.BackgroundWorker bwCurrentNumberOfProcesses;
+        private System.ComponentModel.BackgroundWorker bwRefreshTasks;
+        private Label label1;
     }
 }
