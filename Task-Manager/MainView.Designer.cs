@@ -34,6 +34,7 @@
             this.cPriority = new System.Windows.Forms.ColumnHeader();
             this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblNumberOfProcesses = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // livTasks
@@ -44,7 +45,7 @@
             this.cPriority});
             this.livTasks.Location = new System.Drawing.Point(12, 12);
             this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(904, 358);
+            this.livTasks.Size = new System.Drawing.Size(490, 358);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
@@ -69,7 +70,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(965, 341);
+            this.btnUpdate.Location = new System.Drawing.Point(550, 331);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(94, 29);
             this.btnUpdate.TabIndex = 2;
@@ -77,17 +78,28 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // lblNumberOfProcesses
+            // 
+            this.lblNumberOfProcesses.AutoSize = true;
+            this.lblNumberOfProcesses.Location = new System.Drawing.Point(530, 27);
+            this.lblNumberOfProcesses.Name = "lblNumberOfProcesses";
+            this.lblNumberOfProcesses.Size = new System.Drawing.Size(151, 20);
+            this.lblNumberOfProcesses.TabIndex = 3;
+            this.lblNumberOfProcesses.Text = "Number of Processes:";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 382);
+            this.Controls.Add(this.lblNumberOfProcesses);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.livTasks);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -99,5 +111,6 @@
         private ColumnHeader cPriority;
         private System.ComponentModel.BackgroundWorker bwRefreshTasks;
         private Button btnUpdate;
+        private Label lblNumberOfProcesses;
     }
 }

@@ -57,7 +57,8 @@ namespace Task_Manager
                 livTasks.Items.Add(itm);
             }
 
-            
+            int processcounter = processes.Count;
+            lblNumberOfProcesses.Text = "Number of Processes: " + processcounter.ToString();
 
         }
 
