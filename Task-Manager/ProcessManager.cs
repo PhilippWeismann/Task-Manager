@@ -13,19 +13,30 @@ namespace Task_Manager
         InternalProcesses _processes;
         MainView _mainView;
 
+        public event EventHandler<List<string[]>> OnShowProcessesRequested;
+
         public ProcessManager(MainView mainView, InternalProcesses processes)
         {
             _processes = processes;
             _mainView = mainView;
 
-            
-            _processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
+            _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
+            //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
+            OnShowProcessesRequested+= new EventHandler<List<string[]>>(_mainView.UpdateListView);
 
         }
 
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            _processes.GetCurrentProcesses();
+            List<Process> updatedProcesses = _processes.GetCurrentProcesses();
+            List<string[]> updatedProcessStings = new List<string[]>();
+
+            foreach (Process p in updatedProcesses)
+            {
+                updatedProcessStings.Add(InternalProcesses.ProcessToStringArrray(p));
+            }
+
+            OnShowProcessesRequested?.Invoke(this, updatedProcessStings);
         }
 
     }

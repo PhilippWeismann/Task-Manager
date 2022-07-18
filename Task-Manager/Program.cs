@@ -14,7 +14,6 @@ namespace Task_Manager
 
             
             InternalProcesses processes = new InternalProcesses();
-            processes.RunProcessLoop(2000);
 
             MainView mainView = new MainView();
 

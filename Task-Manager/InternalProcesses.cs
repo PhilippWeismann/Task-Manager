@@ -12,8 +12,8 @@ namespace Task_Manager
 
         #region Members
         List<Process> _processes;
-        private Task _updateProcessesTask;
-        public event EventHandler<List<string[]>> ModelUpdated;
+        //private Task _updateProcessesTask;
+        //public event EventHandler<List<string[]>> ModelUpdated;
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace Task_Manager
         public InternalProcesses()
         {
             _processes = Process.GetProcesses().ToList();
-            _updateProcessesTask = Task.CompletedTask;
+            //_updateProcessesTask = Task.CompletedTask;
         }
         #endregion
 
@@ -39,40 +39,40 @@ namespace Task_Manager
 
         public List<Process> GetCurrentProcesses()
         {
-
             Processes = Process.GetProcesses().ToList();
             return Processes;
         }
 
-        public string[] ProcessToString(Process p)
+        public static string[] ProcessToStringArrray(Process p)
         {
-            string[] s = new string[] { p.ToString(),p.WorkingSet64.ToString()};
+
+            string[] s = new string[] { p.ProcessName, p.WorkingSet64.ToString(), p.BasePriority.ToString() };
             return s;
         }
 
-        public void RunProcessLoop(int refreshmentRate)
-        {
+        //public void RunProcessLoop(int refreshmentRate)
+        //{
 
-            _updateProcessesTask = Task.Factory.StartNew(() => {
-                while (true)
-                {
-                    List<string[]> processtrings = new List<string[]>();
+        //    _updateProcessesTask = Task.Factory.StartNew(() => {
+        //        while (true)
+        //        {
+        //            List<string[]> processtrings = new List<string[]>();
 
-                    Processes = Process.GetProcesses().ToList();
-                    foreach (Process p in Processes)
-                    {
-                        processtrings.Add(ProcessToString(p));
-                    }
+        //            Processes = Process.GetProcesses().ToList();
+        //            foreach (Process p in Processes)
+        //            {
+        //                processtrings.Add(ProcessToString(p));
+        //            }
 
-                    ModelUpdated?.Invoke(this, processtrings);
-                    Thread.Sleep(refreshmentRate);
-                }
+        //            ModelUpdated?.Invoke(this, processtrings);
+        //            Thread.Sleep(refreshmentRate);
+        //        }
 
                 
-            });
+        //    });
             
 
-        }
+        //}
         #endregion
 
     }
