@@ -26,18 +26,34 @@ namespace Task_Manager
 
         }
 
+        #region ohne Count
+        //private void OnUpdateTasksRequested(object sender, EventArgs e)
+        //{
+        //    List<Process> updatedProcesses = _processes.GetCurrentProcesses();
+        //    List<string[]> updatedProcessStings = new List<string[]>();
+
+        //    foreach (Process p in updatedProcesses)
+        //    {
+        //        updatedProcessStings.Add(InternalProcesses.ProcessToStringArrray(p));
+        //    }
+
+        //    OnShowProcessesRequested?.Invoke(this, updatedProcessStings);
+        //}
+        #endregion
+
+        #region mit Count
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            List<Process> updatedProcesses = _processes.GetCurrentProcesses();
+            List<ProcessWithCount> updatedProcesses = _processes.GetCurrentProcessesWithCount();
             List<string[]> updatedProcessStings = new List<string[]>();
 
-            foreach (Process p in updatedProcesses)
+            foreach (ProcessWithCount p in updatedProcesses)
             {
-                updatedProcessStings.Add(InternalProcesses.ProcessToStringArrray(p));
+                updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
             }
 
             OnShowProcessesRequested?.Invoke(this, updatedProcessStings);
         }
-
+        #endregion
     }
 }

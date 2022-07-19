@@ -43,11 +43,61 @@ namespace Task_Manager
             return Processes;
         }
 
+        public List<ProcessWithCount> GetCurrentProcessesWithCount()
+        {
+            List<ProcessWithCount> list = new List<ProcessWithCount>();
+            List<Process> processes = GetCurrentProcesses();
+
+            foreach (Process item in processes)
+            {
+                if (ProcessNameAlreadyExist(item.ProcessName,list, out int i))
+                {
+                    list[i].IncreaseCounter();
+                }
+                else
+                {
+                    list.Add(new ProcessWithCount(item));
+                }
+            }          
+
+            return list;
+        }
+
         public static string[] ProcessToStringArrray(Process p)
         {
 
             string[] s = new string[] { p.ProcessName, p.WorkingSet64.ToString(), p.BasePriority.ToString() };
             return s;
+        }
+
+        public static string[] ProcessWithCountToStringArrray(ProcessWithCount p)
+        {
+
+            string[] s = new string[] { p.Process.ProcessName + " (" + p.Count.ToString() + ")", p.Process.WorkingSet64.ToString(), p.Process.BasePriority.ToString() };
+            return s;
+        }
+
+        private bool ProcessNameAlreadyExist(string processName, List<ProcessWithCount> list, out int listIndex)
+        {
+            if (list == null)
+            {
+                listIndex = -1;
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].Process.ProcessName == processName)
+                    {
+                        listIndex = i;
+                        return true;
+                    }
+                }
+                listIndex = -1;
+                return false;
+            }
+
         }
 
         //public void RunProcessLoop(int refreshmentRate)
@@ -68,9 +118,9 @@ namespace Task_Manager
         //            Thread.Sleep(refreshmentRate);
         //        }
 
-                
+
         //    });
-            
+
 
         //}
         #endregion
