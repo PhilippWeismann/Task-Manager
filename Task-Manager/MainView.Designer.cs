@@ -43,9 +43,10 @@
             this.cTaskName,
             this.cMemory,
             this.cPriority});
-            this.livTasks.Location = new System.Drawing.Point(12, 12);
+            this.livTasks.Location = new System.Drawing.Point(20, 19);
+            this.livTasks.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(490, 358);
+            this.livTasks.Size = new System.Drawing.Size(794, 570);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
@@ -70,9 +71,10 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(550, 331);
+            this.btnUpdate.Location = new System.Drawing.Point(894, 530);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 29);
+            this.btnUpdate.Size = new System.Drawing.Size(153, 46);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -81,21 +83,21 @@
             // lblNumberOfProcesses
             // 
             this.lblNumberOfProcesses.AutoSize = true;
-            this.lblNumberOfProcesses.Location = new System.Drawing.Point(530, 27);
+            this.lblNumberOfProcesses.Location = new System.Drawing.Point(861, 43);
+            this.lblNumberOfProcesses.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNumberOfProcesses.Name = "lblNumberOfProcesses";
-            this.lblNumberOfProcesses.Size = new System.Drawing.Size(151, 20);
+            this.lblNumberOfProcesses.Size = new System.Drawing.Size(245, 32);
             this.lblNumberOfProcesses.TabIndex = 3;
             this.lblNumberOfProcesses.Text = "Number of Processes:";
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 382);
+            this.ClientSize = new System.Drawing.Size(1740, 611);
             this.Controls.Add(this.lblNumberOfProcesses);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.livTasks);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.ResumeLayout(false);

@@ -37,22 +37,23 @@ namespace Task_Manager
 
         #region Methods
 
-        public List<Process> GetCurrentProcesses()
-        {
-            Processes = Process.GetProcesses().ToList();
-            return Processes;
-        }
+        //public List<Process> GetCurrentProcesses()
+        //{
+        //    Processes = Process.GetProcesses().ToList();
+        //    return Processes;
+        //}
 
         public List<ProcessWithCount> GetCurrentProcessesWithCount()
         {
             List<ProcessWithCount> list = new List<ProcessWithCount>();
-            List<Process> processes = GetCurrentProcesses();
+            List<Process> processes = Process.GetProcesses().ToList();
 
             foreach (Process item in processes)
             {
                 if (ProcessNameAlreadyExist(item.ProcessName,list, out int i))
                 {
                     list[i].IncreaseCounter();
+                    list[i].SumMemory(item);
                 }
                 else
                 {
@@ -63,17 +64,16 @@ namespace Task_Manager
             return list;
         }
 
-        public static string[] ProcessToStringArrray(Process p)
-        {
-
-            string[] s = new string[] { p.ProcessName, p.WorkingSet64.ToString(), p.BasePriority.ToString() };
-            return s;
-        }
+        //public static string[] ProcessToStringArrray(Process p)
+        //{
+            
+        //    string[] s = new string[] { p.ProcessName, p.WorkingSet64.ToString(), p.BasePriority.ToString() };
+        //    return s;
+        //}
 
         public static string[] ProcessWithCountToStringArrray(ProcessWithCount p)
         {
-
-            string[] s = new string[] { p.Process.ProcessName + " (" + p.Count.ToString() + ")", p.Process.WorkingSet64.ToString(), p.Process.BasePriority.ToString() };
+            string[] s = new string[] { p.Process.ProcessName + " (" + p.Count.ToString() + ")", p.MemoryUseage.ToString(), p.Process.BasePriority.ToString() };
             return s;
         }
 
