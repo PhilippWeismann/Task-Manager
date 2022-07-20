@@ -36,6 +36,8 @@
             this.tbxID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbxMemoryUseage = new System.Windows.Forms.TextBox();
+            this.tbxThreads = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 134);
+            this.label3.Location = new System.Drawing.Point(37, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 32);
             this.label3.TabIndex = 4;
@@ -83,7 +85,7 @@
             // 
             // tbxID
             // 
-            this.tbxID.Location = new System.Drawing.Point(85, 131);
+            this.tbxID.Location = new System.Drawing.Point(85, 182);
             this.tbxID.Name = "tbxID";
             this.tbxID.ReadOnly = true;
             this.tbxID.Size = new System.Drawing.Size(613, 39);
@@ -92,25 +94,44 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 189);
+            this.label6.Location = new System.Drawing.Point(37, 240);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(189, 32);
+            this.label6.Size = new System.Drawing.Size(194, 32);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Memory Useage";
+            this.label6.Text = "Memory Useage:";
             // 
             // tbxMemoryUseage
             // 
-            this.tbxMemoryUseage.Location = new System.Drawing.Point(232, 186);
+            this.tbxMemoryUseage.Location = new System.Drawing.Point(237, 237);
             this.tbxMemoryUseage.Name = "tbxMemoryUseage";
             this.tbxMemoryUseage.ReadOnly = true;
-            this.tbxMemoryUseage.Size = new System.Drawing.Size(466, 39);
+            this.tbxMemoryUseage.Size = new System.Drawing.Size(461, 39);
             this.tbxMemoryUseage.TabIndex = 11;
+            // 
+            // tbxThreads
+            // 
+            this.tbxThreads.Location = new System.Drawing.Point(230, 134);
+            this.tbxThreads.Name = "tbxThreads";
+            this.tbxThreads.ReadOnly = true;
+            this.tbxThreads.Size = new System.Drawing.Size(468, 39);
+            this.tbxThreads.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 137);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 32);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Sum of Threads:";
             // 
             // DetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 249);
+            this.ClientSize = new System.Drawing.Size(710, 293);
+            this.Controls.Add(this.tbxThreads);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxMemoryUseage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbxID);
@@ -136,5 +157,7 @@
         private TextBox tbxID;
         private Label label6;
         private TextBox tbxMemoryUseage;
+        private TextBox tbxThreads;
+        private Label label4;
     }
 }
