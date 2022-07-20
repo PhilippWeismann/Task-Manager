@@ -111,13 +111,13 @@ namespace Task_Manager
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            //    var selected = livTasks.SelectedItems;
-            //    if (selected.Count == 1)
-            //    {
-            //        var item = selected[0];
-            //        ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
-            //        OnShowDetail?.Invoke(this, selectedProcess);
-            //    }
+            var selected = livTasks.SelectedItems;
+            if (selected.Count == 1)
+            {
+                var item = selected[0];
+                ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
+                OnShowDetail?.Invoke(this, selectedProcess);
+            }
         }
     }
 }
