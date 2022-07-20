@@ -22,7 +22,7 @@ namespace Task_Manager
             //OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        public void UpdatePiechart(object sender, List<ProcessWithCount> processes)
+        public void UpdatePiechart(List<ProcessWithCount> processes)
         {
             SeriesCollection series = new SeriesCollection();
             long memoryOfOther = 0;
@@ -67,19 +67,20 @@ namespace Task_Manager
         }
 
 
-        public void UpdateListView(object sender, List<string[]> processes)
+        public void UpdateListView(List<ProcessWithCount> processes)
         {
             livTasks.Items.Clear();
 
-            foreach (string[] pstring in processes)
+            foreach (ProcessWithCount process in processes)
             {
-                ListViewItem itm = new ListViewItem(pstring);
-                livTasks.Items.Add(itm);
+                ListViewItem item = new ListViewItem(InternalProcesses.ProcessWithCountToStringArrray(process));
+                item.Tag = process;
+
+                livTasks.Items.Add(item);
             }
 
             int processcounter = processes.Count;
             lblNumberOfProcesses.Text = "Number of Processes: " + processcounter.ToString();
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

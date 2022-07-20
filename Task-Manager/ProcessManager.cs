@@ -16,6 +16,8 @@ namespace Task_Manager
         public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
         public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
 
+        List<ProcessWithCount> updatedProcesses = new List<ProcessWithCount>();
+
         public ProcessManager(MainView mainView, InternalProcesses processes)
         {
             _processes = processes;
@@ -23,8 +25,8 @@ namespace Task_Manager
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
             //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
-            OnShowProcessesAsStringsRequested += new EventHandler<List<string[]>>(_mainView.UpdateListView);
-            OnShowProcessesForChartRequested += new EventHandler<List<ProcessWithCount>>(_mainView.UpdatePiechart);
+            ////OnShowProcessesAsStringsRequested += new EventHandler<List<string[]>>(_mainView.UpdateListView);
+            ////OnShowProcessesForChartRequested += new EventHandler<List<ProcessWithCount>>(_mainView.UpdatePiechart);
 
             _mainView.OnShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
@@ -47,7 +49,7 @@ namespace Task_Manager
         #region mit Count
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            List<ProcessWithCount> updatedProcesses = _processes.GetCurrentProcessesWithCount();
+            updatedProcesses = _processes.GetCurrentProcessesWithCount();
             List<string[]> updatedProcessStings = new List<string[]>();
 
             foreach (ProcessWithCount p in updatedProcesses)
@@ -55,8 +57,10 @@ namespace Task_Manager
                 updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
             }
 
-            OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
-            OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
+            //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
+            //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
+            _mainView.UpdatePiechart(updatedProcesses);
+            _mainView.UpdateListView(updatedProcesses);
         }
         #endregion
 
