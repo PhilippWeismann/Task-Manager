@@ -19,6 +19,9 @@ namespace Task_Manager
         private PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
         private PerformanceCounter ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
 
+        int reversecount = 0;
+        bool reverse = false;
+
 
 
         public MainView()
@@ -47,11 +50,18 @@ namespace Task_Manager
             SeriesCollection series = new SeriesCollection();
             long memoryOfOther = 0;
 
+
+            SortByMemorySize smem = new SortByMemorySize();
+            processes.Sort(smem);
+            processes.Reverse();
+
+            long memSizeOfFifthProcess = processes[5].MemoryUseage;
+
             //List
 
             foreach (var process in processes)
             {
-                if (process.MemoryUseage > 100000000)
+                if (process.MemoryUseage > memSizeOfFifthProcess)
                 {
 
                     PieSeries chart = new PieSeries
@@ -102,7 +112,13 @@ namespace Task_Manager
             else if (rbThreads.Checked)
             {
                 SortByThreads sthreads = new SortByThreads();
+
                 processes.Sort(sthreads);
+            }
+
+            if (reverse)
+            {
+                processes.Reverse();
             }
         }
 
@@ -149,6 +165,22 @@ namespace Task_Manager
                 ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
                 OnShowDetail?.Invoke(this, selectedProcess);
             }
+        }
+
+        private void btnChangeSorting_Click(object sender, EventArgs e)
+        {
+            if (reversecount == 0)
+            {
+                reverse = true;
+                reversecount++;
+            }
+            else if (reversecount == 1)
+            {
+                reverse = false;
+                reversecount=0;
+            }
+
+            OnUpdateTasksRequested?.Invoke(this, e);
         }
     }
 }

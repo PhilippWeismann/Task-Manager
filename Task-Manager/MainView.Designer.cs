@@ -42,7 +42,6 @@
             this.rbTaskCount = new System.Windows.Forms.RadioButton();
             this.rbThreads = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbPriority = new System.Windows.Forms.RadioButton();
             this.rbMemory = new System.Windows.Forms.RadioButton();
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -119,7 +118,6 @@
             this.tabPage1.Controls.Add(this.rbTaskCount);
             this.tabPage1.Controls.Add(this.rbThreads);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.rbPriority);
             this.tabPage1.Controls.Add(this.rbMemory);
             this.tabPage1.Controls.Add(this.livTasks);
             this.tabPage1.Controls.Add(this.btnDetails);
@@ -145,16 +143,18 @@
             // 
             // btnChangeSorting
             // 
-            this.btnChangeSorting.Location = new System.Drawing.Point(739, 155);
+            this.btnChangeSorting.Location = new System.Drawing.Point(739, 124);
             this.btnChangeSorting.Name = "btnChangeSorting";
             this.btnChangeSorting.Size = new System.Drawing.Size(130, 53);
             this.btnChangeSorting.TabIndex = 5;
-            this.btnChangeSorting.Text = "Ascending / Descending";
+            this.btnChangeSorting.Text = "Up / Down";
             this.btnChangeSorting.UseVisualStyleBackColor = true;
+            this.btnChangeSorting.Click += new System.EventHandler(this.btnChangeSorting_Click);
             // 
             // rbTaskCount
             // 
             this.rbTaskCount.AutoSize = true;
+            this.rbTaskCount.Checked = true;
             this.rbTaskCount.Location = new System.Drawing.Point(739, 34);
             this.rbTaskCount.Name = "rbTaskCount";
             this.rbTaskCount.Size = new System.Drawing.Size(100, 24);
@@ -166,11 +166,10 @@
             // rbThreads
             // 
             this.rbThreads.AutoSize = true;
-            this.rbThreads.Location = new System.Drawing.Point(739, 94);
+            this.rbThreads.Location = new System.Drawing.Point(739, 64);
             this.rbThreads.Name = "rbThreads";
             this.rbThreads.Size = new System.Drawing.Size(82, 24);
             this.rbThreads.TabIndex = 3;
-            this.rbThreads.TabStop = true;
             this.rbThreads.Text = "Threads";
             this.rbThreads.UseVisualStyleBackColor = true;
             // 
@@ -184,25 +183,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Sorting:";
             // 
-            // rbPriority
-            // 
-            this.rbPriority.AutoSize = true;
-            this.rbPriority.Location = new System.Drawing.Point(739, 64);
-            this.rbPriority.Name = "rbPriority";
-            this.rbPriority.Size = new System.Drawing.Size(77, 24);
-            this.rbPriority.TabIndex = 1;
-            this.rbPriority.TabStop = true;
-            this.rbPriority.Text = "Priority";
-            this.rbPriority.UseVisualStyleBackColor = true;
-            // 
             // rbMemory
             // 
             this.rbMemory.AutoSize = true;
-            this.rbMemory.Location = new System.Drawing.Point(739, 124);
+            this.rbMemory.Location = new System.Drawing.Point(739, 94);
             this.rbMemory.Name = "rbMemory";
             this.rbMemory.Size = new System.Drawing.Size(130, 24);
             this.rbMemory.TabIndex = 1;
-            this.rbMemory.TabStop = true;
             this.rbMemory.Text = "Memory Usage";
             this.rbMemory.UseVisualStyleBackColor = true;
             // 
@@ -292,7 +279,6 @@
         private RadioButton rbTaskCount;
         private RadioButton rbThreads;
         private Label label1;
-        private RadioButton rbPriority;
         private RadioButton rbMemory;
     }
 }

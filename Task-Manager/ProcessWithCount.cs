@@ -11,7 +11,7 @@ namespace Task_Manager
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
         {
-            return x.MemoryUseageOfAll.CompareTo(y.MemoryUseageOfAll);
+            return x.MemoryUseage.CompareTo(y.MemoryUseage);
         }
     }
     public class SortByProcessCount : IComparer<ProcessWithCount>

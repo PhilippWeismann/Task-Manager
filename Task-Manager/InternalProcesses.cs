@@ -37,12 +37,6 @@ namespace Task_Manager
 
         #region Methods
 
-        //public List<Process> GetCurrentProcesses()
-        //{
-        //    Processes = Process.GetProcesses().ToList();
-        //    return Processes;
-        //}
-
         public List<ProcessWithCount> GetCurrentProcessesWithCount()
         {
             List<ProcessWithCount> list = new List<ProcessWithCount>();
@@ -63,12 +57,6 @@ namespace Task_Manager
             return list;
         }
 
-        //public static string[] ProcessToStringArrray(Process p)
-        //{
-            
-        //    string[] s = new string[] { p.ProcessName, p.WorkingSet64.ToString(), p.BasePriority.ToString() };
-        //    return s;
-        //}
 
         public static string[] ProcessWithCountToStringArrray(ProcessWithCount p)
         {
