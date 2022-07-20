@@ -12,9 +12,14 @@ namespace Task_Manager
 {
     public partial class DetailView : Form
     {
-        public DetailView()
+        public DetailView(ProcessWithCount process)
         {
             InitializeComponent();
+
+            tbxTaskName.Text = process.Process.ProcessName;
+            tbxNumberOfTasks.Text = process.Count.ToString();
+            tbxID.Text = process.IdOfAll;
+            tbxMemoryUseage.Text = process.MemoryUseageOfAll;
         }
     }
 }

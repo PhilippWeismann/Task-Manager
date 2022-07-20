@@ -111,6 +111,7 @@
             this.btnDetails.TabIndex = 5;
             this.btnDetails.Text = "View details";
             this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // MainView
             // 

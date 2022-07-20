@@ -13,19 +13,24 @@ namespace Task_Manager
         public Process Process { get; set; }
         public int Count { get { return allProcesses.Count; } }
         public long MemoryUseage{ get; set; }
+        public string MemoryUseageOfAll { get; set; }
+        public string IdOfAll { get; set; }
 
         public ProcessWithCount(Process p)
         {
+            allProcesses.Add(p);
             Process = p;
             MemoryUseage = p.PagedMemorySize64;
-            allProcesses.Add(p);
+            MemoryUseageOfAll = p.PagedMemorySize64.ToString();
+            IdOfAll = p.Id.ToString();
         }
 
         public void AddProcess(Process p)
         {
             allProcesses.Add(p);
-            MemoryUseage += p.WorkingSet64;
-        }
-        
+            MemoryUseage += p.PagedMemorySize64;
+            MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
+            IdOfAll += ", " + p.Id.ToString();
+        }        
     }
 }

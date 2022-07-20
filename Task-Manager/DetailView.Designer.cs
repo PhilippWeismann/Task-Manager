@@ -34,10 +34,8 @@
             this.tbxNumberOfTasks = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbxID = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbxStartTime = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbxMemoryUseage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,49 +89,30 @@
             this.tbxID.Size = new System.Drawing.Size(613, 39);
             this.tbxID.TabIndex = 5;
             // 
-            // label4
+            // label6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 184);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 32);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Starttime:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 189);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(189, 32);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Memory Useage";
             // 
-            // tbxStartTime
+            // tbxMemoryUseage
             // 
-            this.tbxStartTime.Location = new System.Drawing.Point(158, 181);
-            this.tbxStartTime.Name = "tbxStartTime";
-            this.tbxStartTime.ReadOnly = true;
-            this.tbxStartTime.Size = new System.Drawing.Size(540, 39);
-            this.tbxStartTime.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 237);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(234, 32);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Total processor time:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(277, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(421, 39);
-            this.textBox1.TabIndex = 9;
+            this.tbxMemoryUseage.Location = new System.Drawing.Point(232, 186);
+            this.tbxMemoryUseage.Name = "tbxMemoryUseage";
+            this.tbxMemoryUseage.ReadOnly = true;
+            this.tbxMemoryUseage.Size = new System.Drawing.Size(466, 39);
+            this.tbxMemoryUseage.TabIndex = 11;
             // 
             // DetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 311);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.tbxStartTime);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(710, 249);
+            this.Controls.Add(this.tbxMemoryUseage);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tbxID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbxNumberOfTasks);
@@ -155,9 +134,7 @@
         private TextBox tbxNumberOfTasks;
         private Label label3;
         private TextBox tbxID;
-        private Label label4;
-        private TextBox tbxStartTime;
-        private Label label5;
-        private TextBox textBox1;
+        private Label label6;
+        private TextBox tbxMemoryUseage;
     }
 }

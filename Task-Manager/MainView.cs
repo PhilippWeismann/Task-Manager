@@ -8,8 +8,8 @@ namespace Task_Manager
 {
     public partial class MainView : Form
     {
-        public event System.EventHandler OnUpdateTasksRequested;
-
+        public event EventHandler OnUpdateTasksRequested;
+        public event EventHandler<ProcessWithCount> OnShowDetail;
 
         public MainView()
         {
@@ -108,5 +108,16 @@ namespace Task_Manager
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
+
+        //private void btnDetails_Click(object sender, EventArgs e)
+        //{
+        //    var selected = livTasks.SelectedItems;
+        //    if (selected.Count == 1)
+        //    {
+        //        var item = selected[0];
+        //        ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
+        //        OnShowDetail?.Invoke(this, selectedProcess);
+        //    }
+        //}
     }
 }
