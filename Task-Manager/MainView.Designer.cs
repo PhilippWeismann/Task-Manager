@@ -39,6 +39,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cThreads = new System.Windows.Forms.ColumnHeader();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -49,13 +50,15 @@
             this.livTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cTaskName,
             this.cMemory,
-            this.cPriority});
+            this.cPriority,
+            this.cThreads});
             this.livTasks.Location = new System.Drawing.Point(6, 6);
             this.livTasks.Name = "livTasks";
             this.livTasks.Size = new System.Drawing.Size(754, 486);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
+            this.livTasks.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.livTasks_ColumnClick);
             // 
             // cTaskName
             // 
@@ -99,7 +102,7 @@
             this.pieChart.BackColor = System.Drawing.SystemColors.Control;
             this.pieChart.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pieChart.Location = new System.Drawing.Point(44, 41);
-            this.pieChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
             this.pieChart.Size = new System.Drawing.Size(418, 399);
             this.pieChart.TabIndex = 4;
@@ -133,19 +136,24 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(528, 530);
+            this.tabPage2.Size = new System.Drawing.Size(777, 561);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cThreads
+            // 
+            this.cThreads.Text = "Threads";
+            this.cThreads.Width = 120;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 617);
+            this.ClientSize = new System.Drawing.Size(1064, 662);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnUpdate);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.tabControl1.ResumeLayout(false);
@@ -169,5 +177,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
+        private ColumnHeader cThreads;
     }
 }

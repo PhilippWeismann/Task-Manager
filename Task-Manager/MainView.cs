@@ -22,34 +22,12 @@ namespace Task_Manager
             //OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        //public static void listViewAddItem(ListView varListView, ListViewItem item)
-        //{
-        //    if (varListView.InvokeRequired)
-        //    {
-        //        varListView.BeginInvoke(new MethodInvoker(() => listViewAddItem(varListView, item)));
-        //    }
-        //    else
-        //    {
-        //        varListView.Items.Add(item);
-        //    }
-        //}
-
-        //private delegate void ListViewHandler(ListView varListView);
-        //public static void listViewClearItems(ListView varListView)
-        //{
-        //    if (varListView.InvokeRequired)
-        //    {
-        //        varListView.BeginInvoke(new ListViewHandler(listViewClearItems), new object[] { varListView });
-        //    }
-        //    else
-        //    {
-        //        varListView.Items.Clear();
-        //    }
-        //}
         public void UpdatePiechart(object sender, List<ProcessWithCount> processes)
         {
             SeriesCollection series =new SeriesCollection();
             long memoryOfOther = 0;
+
+            //List
 
             foreach (var process in processes)
             {
@@ -107,6 +85,15 @@ namespace Task_Manager
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void livTasks_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            int columnindex = e.Column;
+
+            //livTasks.Columns[columnindex].Width == 0;
+            
+
         }
     }
 }

@@ -73,7 +73,7 @@ namespace Task_Manager
 
         public static string[] ProcessWithCountToStringArrray(ProcessWithCount p)
         {
-            string[] s = new string[] { p.Process.ProcessName + " (" + p.Count.ToString() + ")", p.MemoryUseage.ToString(), p.Process.BasePriority.ToString() };
+            string[] s = new string[] { p.Process.ProcessName + " (" + p.Count.ToString() + ")", p.MemoryUseage.ToString(), p.Process.BasePriority.ToString(), p.Process.Threads.Count.ToString()};
             return s;
         }
 
