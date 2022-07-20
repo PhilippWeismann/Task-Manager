@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.livTasks = new System.Windows.Forms.ListView();
             this.cTaskName = new System.Windows.Forms.ColumnHeader();
             this.cMemory = new System.Windows.Forms.ColumnHeader();
@@ -35,7 +36,7 @@
             this.cThreads = new System.Windows.Forms.ColumnHeader();
             this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
             this.lblNumberOfProcesses = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnChangeSorting = new System.Windows.Forms.Button();
@@ -48,7 +49,8 @@
             this.gauRAM = new LiveCharts.WinForms.SolidGauge();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.gauCPU = new LiveCharts.WinForms.SolidGauge();
-            this.tabControl1.SuspendLayout();
+            this.refreshtimer = new System.Windows.Forms.Timer(this.components);
+            this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
@@ -101,15 +103,16 @@
             this.lblNumberOfProcesses.TabIndex = 3;
             this.lblNumberOfProcesses.Text = "Number of Processes:";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(887, 476);
-            this.tabControl1.TabIndex = 5;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(887, 476);
+            this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -241,16 +244,21 @@
             this.gauCPU.TabIndex = 7;
             this.gauCPU.Text = "CPU - Usage";
             // 
+            // refreshtimer
+            // 
+            this.refreshtimer.Interval = 2000;
+            this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 490);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -266,7 +274,7 @@
         private ColumnHeader cPriority;
         private System.ComponentModel.BackgroundWorker bwRefreshTasks;
         private Label lblNumberOfProcesses;
-        private TabControl tabControl1;
+        private TabControl tabControl;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private ColumnHeader cThreads;
@@ -280,5 +288,6 @@
         private RadioButton rbThreads;
         private Label label1;
         private RadioButton rbMemory;
+        private System.Windows.Forms.Timer refreshtimer;
     }
 }

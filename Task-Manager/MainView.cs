@@ -33,6 +33,10 @@ namespace Task_Manager
             gauRAM.From = 0;
             gauRAM.To = 100;
 
+            refreshtimer.Start();
+
+
+
 
             // bwRefreshTasks.RunWorkerAsync();
         }
@@ -181,6 +185,26 @@ namespace Task_Manager
             }
 
             OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        
+
+        private void refreshtimer_Tick(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex!=0)
+            {
+                OnUpdateTasksRequested?.Invoke(this, e);
+                refreshtimer.Stop();
+            }
+            else
+            {
+                refreshtimer.Start();
+            }
         }
     }
 }
