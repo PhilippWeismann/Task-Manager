@@ -48,23 +48,23 @@ namespace Task_Manager
         //}
         public void UpdatePiechart(object sender, List<ProcessWithCount> processes)
         {
-            SeriesCollection series =new SeriesCollection();
+            SeriesCollection series = new SeriesCollection();
             long memoryOfOther = 0;
 
             foreach (var process in processes)
             {
-                if (process.MemoryUseage>100000000)
+                if (process.MemoryUseage > 100000000)
                 {
-                    
+
                     PieSeries chart = new PieSeries
                     {
                         Title = process.Process.ProcessName,
-                        Values = new ChartValues<long> { process.MemoryUseage},
+                        Values = new ChartValues<long> { process.MemoryUseage },
                         PushOut = 10,
                         DataLabels = true,
                         LabelPosition = PieLabelPosition.InsideSlice,
                         LabelPoint = chartPoint => string.Format("{0} ({1:P})", process.Process.ProcessName, chartPoint.Participation)
-                    };                
+                    };
                     series.Add(chart);
                 }
                 else
@@ -76,7 +76,7 @@ namespace Task_Manager
             PieSeries chartOfOther = new PieSeries
             {
                 Title = "other",
-                Values = new ChartValues<long> {memoryOfOther },
+                Values = new ChartValues<long> { memoryOfOther },
                 PushOut = 10,
                 DataLabels = true,
                 LabelPosition = PieLabelPosition.InsideSlice,
@@ -85,9 +85,9 @@ namespace Task_Manager
             series.Add(chartOfOther);
 
             pieChart.Series = series;
-            
+
         }
-   
+
 
         public void UpdateListView(object sender, List<string[]> processes)
         {
@@ -109,15 +109,15 @@ namespace Task_Manager
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        //private void btnDetails_Click(object sender, EventArgs e)
-        //{
-        //    var selected = livTasks.SelectedItems;
-        //    if (selected.Count == 1)
-        //    {
-        //        var item = selected[0];
-        //        ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
-        //        OnShowDetail?.Invoke(this, selectedProcess);
-        //    }
-        //}
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            //    var selected = livTasks.SelectedItems;
+            //    if (selected.Count == 1)
+            //    {
+            //        var item = selected[0];
+            //        ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
+            //        OnShowDetail?.Invoke(this, selectedProcess);
+            //    }
+        }
     }
 }
