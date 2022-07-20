@@ -43,7 +43,6 @@
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // livTasks
@@ -54,7 +53,7 @@
             this.cPriority,
             this.cThreads});
             this.livTasks.Location = new System.Drawing.Point(2, 2);
-            this.livTasks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.livTasks.Margin = new System.Windows.Forms.Padding(2);
             this.livTasks.Name = "livTasks";
             this.livTasks.Size = new System.Drawing.Size(754, 486);
             this.livTasks.TabIndex = 0;
@@ -88,7 +87,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1309, 917);
+            this.btnUpdate.Location = new System.Drawing.Point(852, 531);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(8);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(103, 29);
@@ -131,29 +130,29 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.livTasks);
-            this.tabPage1.Location = new System.Drawing.Point(8, 46);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage1.Size = new System.Drawing.Size(1260, 896);
+            this.tabPage1.Size = new System.Drawing.Size(777, 561);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(8, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage2.Size = new System.Drawing.Size(1260, 896);
+            this.tabPage2.Size = new System.Drawing.Size(777, 561);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(1306, 851);
+            this.btnDetails.Location = new System.Drawing.Point(852, 466);
             this.btnDetails.Margin = new System.Windows.Forms.Padding(5);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(105, 33);
@@ -165,17 +164,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2320, 987);
+            this.ClientSize = new System.Drawing.Size(974, 629);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnUpdate);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
