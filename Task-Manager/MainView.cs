@@ -3,6 +3,12 @@ using LiveCharts.WinForms;
 using LiveCharts.Wpf;
 using System.ComponentModel;
 using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.InteropServices;
+
 
 namespace Task_Manager
 {
@@ -10,14 +16,26 @@ namespace Task_Manager
     {
         public event EventHandler OnUpdateTasksRequested;
         public event EventHandler<ProcessWithCount> OnShowDetail;
-        int arrangecolumn=0;
-        bool descending=true;
+        private PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+        private PerformanceCounter ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+
+
 
         public MainView()
         {
             InitializeComponent();
+            gauCPU.From = 0;
+            gauCPU.To = 100;
+
+            gauRAM.From = 0;
+            gauRAM.To = 100;
+
+
             // bwRefreshTasks.RunWorkerAsync();
         }
+
+
+
 
         public void bwRefreshTasks_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -68,56 +86,42 @@ namespace Task_Manager
 
         }
 
-        public void SortProcesses(List<ProcessWithCount> processes, int columnindex)
+        public void SortProcesses (List<ProcessWithCount> processes)
         {
-            bool unsorted = true;
 
-            List<string[]> allprocesses = new List<string[]>();
-
-            foreach (ProcessWithCount process in processes)
+            if (rbTaskCount.Checked)
             {
-                allprocesses.Add(InternalProcesses.ProcessWithCountToStringArrray(process));
+                SortByProcessCount scount = new SortByProcessCount();
+                processes.Sort(scount);
             }
-
-            bool isnumber = true;
-
-            try
+            else if (rbMemory.Checked)
             {
-                int tryint = Convert.ToInt32(allprocesses[0][columnindex]);
+                SortByMemorySize smem = new SortByMemorySize();
+                processes.Sort(smem);
             }
-            catch (Exception)
+            else if (rbThreads.Checked)
             {
-                isnumber = false;
+                SortByThreads sthreads = new SortByThreads();
+                processes.Sort(sthreads);
             }
+        }
 
 
-            
-            while (unsorted)
-            {
-                if (isnumber)
-                {
 
-
-                }
-                else
-                {
-                    //sort letters
-
-                }
-
-
-            }
-        
-        
-        
+        public void UpdateGauges(List<ProcessWithCount> processes)
+        {
+            gauRAM.Value = Convert.ToInt32(ramCounter.NextValue());
+            gauCPU.Value = Convert.ToInt32(Math.Round(cpuCounter.NextValue()));
         }
 
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
-
-
             livTasks.Items.Clear();
+
+            SortProcesses(processes);
+
+            
 
             foreach (ProcessWithCount process in processes)
             {
@@ -145,20 +149,6 @@ namespace Task_Manager
                 ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
                 OnShowDetail?.Invoke(this, selectedProcess);
             }
-        }
-
-        private void livTasks_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            if (e.Column == arrangecolumn)
-            {
-
-            }
-            else
-            {
-
-            }
-
-
         }
     }
 }

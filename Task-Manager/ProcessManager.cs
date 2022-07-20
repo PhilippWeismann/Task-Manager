@@ -61,6 +61,7 @@ namespace Task_Manager
             //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
             _mainView.UpdatePiechart(updatedProcesses);
             _mainView.UpdateListView(updatedProcesses);
+            _mainView.UpdateGauges(updatedProcesses);
         }
         #endregion
 

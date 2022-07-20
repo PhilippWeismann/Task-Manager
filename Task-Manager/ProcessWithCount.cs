@@ -7,6 +7,29 @@ using System.Threading.Tasks;
 
 namespace Task_Manager
 {
+    public class SortByMemorySize : IComparer<ProcessWithCount>
+    {
+        public int Compare(ProcessWithCount x, ProcessWithCount y)
+        {
+            return x.MemoryUseageOfAll.CompareTo(y.MemoryUseageOfAll);
+        }
+    }
+    public class SortByProcessCount : IComparer<ProcessWithCount>
+    {
+        public int Compare(ProcessWithCount x, ProcessWithCount y)
+        {
+            return x.Count.CompareTo(y.Count);
+        }
+    }
+
+    public class SortByThreads : IComparer<ProcessWithCount>
+    {
+        public int Compare(ProcessWithCount x, ProcessWithCount y)
+        {
+            return x.ThreadsOfAll.CompareTo(y.ThreadsOfAll);
+        }
+    }
+
     public class ProcessWithCount
     {
         private List<Process> allProcesses = new List<Process>();
