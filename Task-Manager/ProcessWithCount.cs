@@ -9,25 +9,28 @@ namespace Task_Manager
 {
     public class ProcessWithCount
     {
+        private List<Process> allProcesses = new List<Process>();
         public Process Process { get; set; }
-        public int Count { get; set; }
+        public int Count { get { return allProcesses.Count; } }
         public long MemoryUseage{ get; set; }
+        public string MemoryUseageOfAll { get; set; }
+        public string IdOfAll { get; set; }
 
         public ProcessWithCount(Process p)
         {
+            allProcesses.Add(p);
             Process = p;
-            Count = 1;
-            MemoryUseage = p.WorkingSet64;
+            MemoryUseage = p.PagedMemorySize64;
+            MemoryUseageOfAll = p.PagedMemorySize64.ToString();
+            IdOfAll = p.Id.ToString();
         }
 
-        public void IncreaseCounter()
+        public void AddProcess(Process p)
         {
-            Count++;
-        }
-        public void SumMemory(Process currentProcess)
-        {
-            MemoryUseage += currentProcess.WorkingSet64;
-        }
-        
+            allProcesses.Add(p);
+            MemoryUseage += p.PagedMemorySize64;
+            MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
+            IdOfAll += ", " + p.Id.ToString();
+        }        
     }
 }
