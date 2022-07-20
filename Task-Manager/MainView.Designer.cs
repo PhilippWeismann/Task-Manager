@@ -35,6 +35,7 @@
             this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblNumberOfProcesses = new System.Windows.Forms.Label();
+            this.pieChart = new LiveCharts.WinForms.PieChart();
             this.SuspendLayout();
             // 
             // livTasks
@@ -44,9 +45,9 @@
             this.cMemory,
             this.cPriority});
             this.livTasks.Location = new System.Drawing.Point(20, 19);
-            this.livTasks.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.livTasks.Margin = new System.Windows.Forms.Padding(5);
             this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(794, 570);
+            this.livTasks.Size = new System.Drawing.Size(794, 956);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
@@ -71,8 +72,8 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(894, 530);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUpdate.Location = new System.Drawing.Point(861, 929);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 46);
             this.btnUpdate.TabIndex = 2;
@@ -90,11 +91,22 @@
             this.lblNumberOfProcesses.TabIndex = 3;
             this.lblNumberOfProcesses.Text = "Number of Processes:";
             // 
+            // pieChart
+            // 
+            this.pieChart.BackColor = System.Drawing.SystemColors.Control;
+            this.pieChart.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pieChart.Location = new System.Drawing.Point(861, 100);
+            this.pieChart.Name = "pieChart";
+            this.pieChart.Size = new System.Drawing.Size(867, 790);
+            this.pieChart.TabIndex = 4;
+            this.pieChart.Text = "pieChart1";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1740, 611);
+            this.ClientSize = new System.Drawing.Size(1740, 989);
+            this.Controls.Add(this.pieChart);
             this.Controls.Add(this.lblNumberOfProcesses);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.livTasks);
@@ -114,5 +126,6 @@
         private System.ComponentModel.BackgroundWorker bwRefreshTasks;
         private Button btnUpdate;
         private Label lblNumberOfProcesses;
+        private LiveCharts.WinForms.PieChart pieChart;
     }
 }

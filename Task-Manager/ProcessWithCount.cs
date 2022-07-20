@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task_Manager
 {
-    internal class ProcessWithCount
+    public class ProcessWithCount
     {
         public Process Process { get; set; }
         public int Count { get; set; }
@@ -28,5 +28,6 @@ namespace Task_Manager
         {
             MemoryUseage += currentProcess.WorkingSet64;
         }
+        
     }
 }

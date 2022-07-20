@@ -13,7 +13,8 @@ namespace Task_Manager
         InternalProcesses _processes;
         MainView _mainView;
 
-        public event EventHandler<List<string[]>> OnShowProcessesRequested;
+        public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
+        public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
 
         public ProcessManager(MainView mainView, InternalProcesses processes)
         {
@@ -22,8 +23,9 @@ namespace Task_Manager
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
             //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
-            OnShowProcessesRequested+= new EventHandler<List<string[]>>(_mainView.UpdateListView);
+            OnShowProcessesAsStringsRequested += new EventHandler<List<string[]>>(_mainView.UpdateListView);
 
+            OnShowProcessesForChartRequested += new EventHandler<List<ProcessWithCount>>(_mainView.UpdatePiechart);
         }
 
         #region ohne Count
@@ -52,7 +54,8 @@ namespace Task_Manager
                 updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
             }
 
-            OnShowProcessesRequested?.Invoke(this, updatedProcessStings);
+            OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
+            OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
         }
         #endregion
     }
