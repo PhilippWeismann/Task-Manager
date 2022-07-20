@@ -15,6 +15,7 @@ namespace Task_Manager
         public long MemoryUseage{ get; set; }
         public string MemoryUseageOfAll { get; set; }
         public string IdOfAll { get; set; }
+        public int ThreadsOfAll { get; set; }
 
         public ProcessWithCount(Process p)
         {
@@ -23,6 +24,7 @@ namespace Task_Manager
             MemoryUseage = p.PagedMemorySize64;
             MemoryUseageOfAll = p.PagedMemorySize64.ToString();
             IdOfAll = p.Id.ToString();
+            ThreadsOfAll = p.Threads.Count;
         }
 
         public void AddProcess(Process p)
@@ -31,6 +33,7 @@ namespace Task_Manager
             MemoryUseage += p.PagedMemorySize64;
             MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
             IdOfAll += ", " + p.Id.ToString();
+            ThreadsOfAll += p.Threads.Count;
         }        
     }
 }
