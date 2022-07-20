@@ -305,7 +305,7 @@
             // 
             // refreshtimer
             // 
-            this.refreshtimer.Interval = 1;
+            this.refreshtimer.Interval = 2000;
             this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
             // 
             // MainView
@@ -317,6 +317,7 @@
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
+            this.Load += new System.EventHandler(this.MainView_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

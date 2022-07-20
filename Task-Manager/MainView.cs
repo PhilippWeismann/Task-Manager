@@ -35,7 +35,6 @@ namespace Task_Manager
             gauRAM.To = 100;
 
             btnUpdate.Visible = true;
-            btnUpdate.PerformClick();
         }
 
 
@@ -200,15 +199,19 @@ namespace Task_Manager
                 OnUpdateTasksRequested?.Invoke(this, e);
                 refreshtimer.Stop();
             }
+            else if(rbAutomatic.Checked)
+            {
+                OnUpdateTasksRequested?.Invoke(this, e);
+                refreshtimer.Start();
+            }
             else
             {
-                refreshtimer.Start();
+                OnUpdateTasksRequested?.Invoke(this, e);
             }
         }
 
         private void rbAutomatic_CheckedChanged(object sender, EventArgs e)
         {
-            refreshtimer.Interval = 2000;
             refreshtimer.Start();
 
             if (rbAutomatic.Checked)
@@ -226,6 +229,11 @@ namespace Task_Manager
         }
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void MainView_Load(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
