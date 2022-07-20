@@ -55,12 +55,12 @@
             // cTaskName
             // 
             this.cTaskName.Text = "Task Name";
-            this.cTaskName.Width = 200;
+            this.cTaskName.Width = 250;
             // 
             // cMemory
             // 
             this.cMemory.Text = "Memory Useage";
-            this.cMemory.Width = 125;
+            this.cMemory.Width = 200;
             // 
             // cPriority
             // 

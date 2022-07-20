@@ -60,11 +60,10 @@ namespace Task_Manager
                     {
                         Title = process.Process.ProcessName,
                         Values = new ChartValues<long> { process.MemoryUseage},
-                        PushOut = 15,
+                        PushOut = 10,
                         DataLabels = true,
                         LabelPosition = PieLabelPosition.InsideSlice,
-                        LabelPoint = chartPoint => string.Format("{0} ({1:P})", process.Process.ProcessName, chartPoint.Participation),
-                        
+                        LabelPoint = chartPoint => string.Format("{0} ({1:P})", process.Process.ProcessName, chartPoint.Participation)
                     };                
                     series.Add(chart);
                 }
@@ -78,7 +77,7 @@ namespace Task_Manager
             {
                 Title = "other",
                 Values = new ChartValues<long> {memoryOfOther },
-                PushOut = 15,
+                PushOut = 10,
                 DataLabels = true,
                 LabelPosition = PieLabelPosition.InsideSlice,
                 LabelPoint = chartPoint => string.Format("{0} ({1:P})", "other", chartPoint.Participation)
