@@ -36,6 +36,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblNumberOfProcesses = new System.Windows.Forms.Label();
             this.pieChart = new LiveCharts.WinForms.PieChart();
+            this.btnDetails = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // livTasks
@@ -65,6 +66,7 @@
             // cPriority
             // 
             this.cPriority.Text = "Priority";
+            this.cPriority.Width = 100;
             // 
             // bwRefreshTasks
             // 
@@ -72,7 +74,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(861, 929);
+            this.btnUpdate.Location = new System.Drawing.Point(1045, 929);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 46);
@@ -101,11 +103,21 @@
             this.pieChart.TabIndex = 4;
             this.pieChart.Text = "pieChart1";
             // 
+            // btnDetails
+            // 
+            this.btnDetails.Location = new System.Drawing.Point(861, 929);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(150, 46);
+            this.btnDetails.TabIndex = 5;
+            this.btnDetails.Text = "View details";
+            this.btnDetails.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1740, 989);
+            this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.pieChart);
             this.Controls.Add(this.lblNumberOfProcesses);
             this.Controls.Add(this.btnUpdate);
@@ -127,5 +139,6 @@
         private Button btnUpdate;
         private Label lblNumberOfProcesses;
         private LiveCharts.WinForms.PieChart pieChart;
+        private Button btnDetails;
     }
 }

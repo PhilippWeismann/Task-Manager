@@ -17,7 +17,7 @@ namespace Task_Manager
         {
             Process = p;
             Count = 1;
-            MemoryUseage = p.WorkingSet64;
+            MemoryUseage = p.PagedMemorySize64;
         }
 
         public void IncreaseCounter()
