@@ -88,8 +88,8 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(806, 573);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUpdate.Location = new System.Drawing.Point(1309, 917);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(8);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(103, 29);
             this.btnUpdate.TabIndex = 2;
@@ -110,10 +110,10 @@
             // 
             this.pieChart.BackColor = System.Drawing.SystemColors.Control;
             this.pieChart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pieChart.Location = new System.Drawing.Point(31, 23);
-            this.pieChart.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pieChart.Location = new System.Drawing.Point(1306, 71);
+            this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(418, 399);
+            this.pieChart.Size = new System.Drawing.Size(992, 773);
             this.pieChart.TabIndex = 4;
             this.pieChart.Text = "pieChart1";
             // 
@@ -121,7 +121,8 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(20, 19);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(785, 594);
@@ -130,39 +131,41 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.livTasks);
-            this.tabPage1.Controls.Add(this.lblNumberOfProcesses);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(8, 46);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(777, 561);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
+            this.tabPage1.Size = new System.Drawing.Size(1260, 896);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.pieChart);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(8, 46);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(777, 561);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
+            this.tabPage2.Size = new System.Drawing.Size(1260, 896);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(804, 532);
+            this.btnDetails.Location = new System.Drawing.Point(1306, 851);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(5);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(105, 33);
             this.btnDetails.TabIndex = 0;
             this.btnDetails.Text = "Show details";
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 616);
+            this.ClientSize = new System.Drawing.Size(2320, 987);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnUpdate);
