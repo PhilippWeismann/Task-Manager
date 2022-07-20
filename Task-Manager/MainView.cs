@@ -10,6 +10,8 @@ namespace Task_Manager
     {
         public event EventHandler OnUpdateTasksRequested;
         public event EventHandler<ProcessWithCount> OnShowDetail;
+        int arrangecolumn=0;
+        bool descending=true;
 
         public MainView()
         {
@@ -66,9 +68,55 @@ namespace Task_Manager
 
         }
 
+        public void SortProcesses(List<ProcessWithCount> processes, int columnindex)
+        {
+            bool unsorted = true;
+
+            List<string[]> allprocesses = new List<string[]>();
+
+            foreach (ProcessWithCount process in processes)
+            {
+                allprocesses.Add(InternalProcesses.ProcessWithCountToStringArrray(process));
+            }
+
+            bool isnumber = true;
+
+            try
+            {
+                int tryint = Convert.ToInt32(allprocesses[0][columnindex]);
+            }
+            catch (Exception)
+            {
+                isnumber = false;
+            }
+
+
+            
+            while (unsorted)
+            {
+                if (isnumber)
+                {
+
+
+                }
+                else
+                {
+                    //sort letters
+
+                }
+
+
+            }
+        
+        
+        
+        }
+
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
+
+
             livTasks.Items.Clear();
 
             foreach (ProcessWithCount process in processes)
@@ -101,10 +149,15 @@ namespace Task_Manager
 
         private void livTasks_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            int columnindex = e.Column;
+            if (e.Column == arrangecolumn)
+            {
 
-            //livTasks.Columns[columnindex].Width == 0;
-            
+            }
+            else
+            {
+
+            }
+
 
         }
     }

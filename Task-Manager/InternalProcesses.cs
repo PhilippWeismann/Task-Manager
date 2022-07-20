@@ -99,29 +99,6 @@ namespace Task_Manager
 
         }
 
-        //public void RunProcessLoop(int refreshmentRate)
-        //{
-
-        //    _updateProcessesTask = Task.Factory.StartNew(() => {
-        //        while (true)
-        //        {
-        //            List<string[]> processtrings = new List<string[]>();
-
-        //            Processes = Process.GetProcesses().ToList();
-        //            foreach (Process p in Processes)
-        //            {
-        //                processtrings.Add(ProcessToString(p));
-        //            }
-
-        //            ModelUpdated?.Invoke(this, processtrings);
-        //            Thread.Sleep(refreshmentRate);
-        //        }
-
-
-        //    });
-
-
-        //}
         #endregion
 
     }

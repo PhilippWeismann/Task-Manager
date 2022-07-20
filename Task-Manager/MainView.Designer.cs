@@ -39,8 +39,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnDetails = new System.Windows.Forms.Button();
             this.pieChart = new LiveCharts.WinForms.PieChart();
+            this.btnDetails = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -56,7 +56,7 @@
             this.livTasks.Location = new System.Drawing.Point(16, 10);
             this.livTasks.Margin = new System.Windows.Forms.Padding(2);
             this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(672, 376);
+            this.livTasks.Size = new System.Drawing.Size(691, 376);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
@@ -88,7 +88,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(745, 366);
+            this.btnUpdate.Location = new System.Drawing.Point(749, 43);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(8);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(103, 29);
@@ -141,9 +141,18 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pieChart
+            // 
+            this.pieChart.BackColor = System.Drawing.Color.Black;
+            this.pieChart.Location = new System.Drawing.Point(8, 8);
+            this.pieChart.Name = "pieChart";
+            this.pieChart.Size = new System.Drawing.Size(698, 378);
+            this.pieChart.TabIndex = 6;
+            this.pieChart.Text = "pieChart1";
+            // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(749, 408);
+            this.btnDetails.Location = new System.Drawing.Point(749, 85);
             this.btnDetails.Margin = new System.Windows.Forms.Padding(5);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(105, 33);
@@ -151,19 +160,11 @@
             this.btnDetails.Text = "Show details";
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
-            // pieChart
-            // 
-            this.pieChart.Location = new System.Drawing.Point(8, 22);
-            this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(521, 278);
-            this.pieChart.TabIndex = 6;
-            this.pieChart.Text = "pieChart1";
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 465);
+            this.ClientSize = new System.Drawing.Size(870, 457);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnUpdate);
