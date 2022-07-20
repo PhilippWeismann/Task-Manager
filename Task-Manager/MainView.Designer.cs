@@ -32,6 +32,7 @@
             this.cTaskName = new System.Windows.Forms.ColumnHeader();
             this.cMemory = new System.Windows.Forms.ColumnHeader();
             this.cPriority = new System.Windows.Forms.ColumnHeader();
+            this.cThreads = new System.Windows.Forms.ColumnHeader();
             this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblNumberOfProcesses = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnDetails = new System.Windows.Forms.Button();
-            this.cThreads = new System.Windows.Forms.ColumnHeader();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,11 @@
             this.cPriority.Text = "Priority";
             this.cPriority.Width = 100;
             // 
+            // cThreads
+            // 
+            this.cThreads.Text = "Threads";
+            this.cThreads.Width = 120;
+            // 
             // bwRefreshTasks
             // 
             this.bwRefreshTasks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRefreshTasks_DoWork);
@@ -82,7 +87,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(1309, 917);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(8);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(168, 46);
             this.btnUpdate.TabIndex = 2;
@@ -104,10 +109,10 @@
             // 
             this.pieChart.BackColor = System.Drawing.SystemColors.Control;
             this.pieChart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pieChart.Location = new System.Drawing.Point(44, 41);
+            this.pieChart.Location = new System.Drawing.Point(1306, 71);
             this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(679, 638);
+            this.pieChart.Size = new System.Drawing.Size(992, 773);
             this.pieChart.TabIndex = 4;
             this.pieChart.Text = "pieChart1";
             // 
@@ -116,7 +121,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(20, 19);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1276, 950);
@@ -126,9 +131,9 @@
             // 
             this.tabPage1.Controls.Add(this.livTasks);
             this.tabPage1.Location = new System.Drawing.Point(8, 46);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage1.Size = new System.Drawing.Size(1260, 896);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
@@ -137,9 +142,9 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(8, 46);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage2.Size = new System.Drawing.Size(1260, 896);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
@@ -148,22 +153,18 @@
             // btnDetails
             // 
             this.btnDetails.Location = new System.Drawing.Point(1306, 851);
-            this.btnDetails.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(5);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(171, 53);
             this.btnDetails.TabIndex = 0;
             this.btnDetails.Text = "Show details";
-            // 
-            // cThreads
-            // 
-            this.cThreads.Text = "Threads";
-            this.cThreads.Width = 120;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1492, 987);
+            this.ClientSize = new System.Drawing.Size(2320, 987);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.pieChart);
             this.Controls.Add(this.lblNumberOfProcesses);
