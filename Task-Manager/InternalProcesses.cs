@@ -52,8 +52,7 @@ namespace Task_Manager
             {
                 if (ProcessNameAlreadyExist(item.ProcessName,list, out int i))
                 {
-                    list[i].IncreaseCounter();
-                    list[i].SumMemory(item);
+                    list[i].AddProcess(item);
                 }
                 else
                 {
