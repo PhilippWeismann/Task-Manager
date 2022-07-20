@@ -27,18 +27,15 @@ namespace Task_Manager
         public MainView()
         {
             InitializeComponent();
+            OnUpdateTasksRequested?.Invoke(this, new EventArgs());
             gauCPU.From = 0;
             gauCPU.To = 100;
 
             gauRAM.From = 0;
             gauRAM.To = 100;
 
-            refreshtimer.Start();
-
-
-
-
-            // bwRefreshTasks.RunWorkerAsync();
+            btnUpdate.Visible = true;
+            btnUpdate.PerformClick();
         }
 
 
@@ -175,11 +172,13 @@ namespace Task_Manager
         {
             if (reversecount == 0)
             {
+                lblSorting.Text = "Sorting: descending";
                 reverse = true;
                 reversecount++;
             }
             else if (reversecount == 1)
             {
+                lblSorting.Text = "Sorting: ascending";
                 reverse = false;
                 reversecount=0;
             }
@@ -205,6 +204,30 @@ namespace Task_Manager
             {
                 refreshtimer.Start();
             }
+        }
+
+        private void rbAutomatic_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshtimer.Interval = 2000;
+            refreshtimer.Start();
+
+            if (rbAutomatic.Checked)
+            {
+                btnUpdate.Visible = false;
+                OnUpdateTasksRequested?.Invoke(this, e);
+                refreshtimer.Start();
+            }
+            else
+            {
+                refreshtimer.Stop();
+                btnUpdate.Visible = true;
+            }
+
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
         }
     }
 }
