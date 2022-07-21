@@ -90,12 +90,12 @@ namespace Task_Manager
 
         }
 
-        public static int GetCurrentCPU()
+        public static int GetCurrentCPUPercentage()
         {        
             return Convert.ToInt32(Math.Round(cpuCounter.NextValue()));
         }
         
-        public static int GetCurrentRAM()
+        public static int GetCurrentRAMPercentage()
         {
             return Convert.ToInt32(ramCounter.NextValue());
         }

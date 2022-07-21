@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
-
+using System.Windows;
 
 namespace Task_Manager
 {
@@ -33,7 +33,20 @@ namespace Task_Manager
             gauRAM.To = 100;
 
             btnUpdate.Visible = true;
-        }
+
+            lncCpuHistory.DisableAnimations=true;
+            lncCpuHistory.AxisY.Clear();
+            lncCpuHistory.AxisY.Add(
+            new Axis
+            {
+                MinValue = 0,
+                MaxValue = 100
+            }) ;
+
+            lncCpuHistory.LegendLocation = LegendLocation.Right;
+            lncCpuHistory.DefaultLegend.Visibility = Visibility.Visible;
+            
+        }   
 
 
 
@@ -145,16 +158,21 @@ namespace Task_Manager
             lblNumberOfProcesses.Text = "Number of Processes: " + processcounter.ToString();
         }
 
-        public void UpdateLineChart(List<int> cpuHistory)
+        public void UpdateLineChart(List<List<int>> chartlist, string[] labels)
         {
-            SeriesCollection series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Values = new ChartValues<int>(cpuHistory),
-                }
-            };
+            int counter = 0;
+            SeriesCollection series = new SeriesCollection();
 
+            foreach (List<int> dataset in chartlist)
+            {
+                LineSeries line = new LineSeries();
+                line.Values = new ChartValues<int>(dataset);
+                line.Title = labels[counter];
+                series.Add(line);
+                counter++;
+            }
+
+            
             lncCpuHistory.Series = series;
         }
         private void btnUpdate_Click(object sender, EventArgs e)

@@ -13,6 +13,7 @@ namespace Task_Manager
         InternalProcesses _processes;
         MainView _mainView;
         List<int> _cpuHistory;
+        List<int> _ramHistory;
 
         //public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
         //public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
@@ -24,6 +25,7 @@ namespace Task_Manager
             _processes = processes;
             _mainView = mainView;
             _cpuHistory = new List<int>();
+            _ramHistory = new List<int>();
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
             //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
@@ -59,14 +61,30 @@ namespace Task_Manager
                 updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
             }
 
-            _cpuHistory.Add(InternalProcesses.GetCurrentCPU());
+
+
+            if (_cpuHistory.Count > 20)
+            {
+                _cpuHistory.RemoveAt(0);
+                _ramHistory.RemoveAt(0);
+            }
+
+            _cpuHistory.Add(InternalProcesses.GetCurrentCPUPercentage());
+            _ramHistory.Add(InternalProcesses.GetCurrentRAMPercentage());
 
             //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
             //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
             _mainView.UpdatePiechart(updatedProcesses);
             _mainView.UpdateListView(updatedProcesses);
-            _mainView.UpdateGauges(InternalProcesses.GetCurrentCPU(), InternalProcesses.GetCurrentRAM());
-            _mainView.UpdateLineChart(_cpuHistory);
+            _mainView.UpdateGauges(InternalProcesses.GetCurrentCPUPercentage(), InternalProcesses.GetCurrentRAMPercentage());
+
+            List<List<int>> chartlist = new List<List<int>>();
+            chartlist.Add(_cpuHistory);
+            chartlist.Add(_ramHistory);
+
+            string[] labels = new string[] { "CPU Percentage", "RAM Percentage" };
+
+            _mainView.UpdateLineChart(chartlist, labels );
         }
         #endregion
 
