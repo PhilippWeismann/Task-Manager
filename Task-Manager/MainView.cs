@@ -212,24 +212,19 @@ namespace Task_Manager
             if (tabControl.SelectedIndex == 0)
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
-                refreshTasksTimer.Start();
-                rbAutomatic.Checked = true;
-                rbManual.Checked = false;
+                if (rbAutomatic.Checked)
+                {
+                    refreshTasksTimer.Start();
+                }
             }
-            else if (tabControl.SelectedIndex == 1)
+            if (tabControl.SelectedIndex == 1)
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
                 refreshTasksTimer.Stop();
-                rbAutomatic.Checked = false;
-                rbManual.Checked = true;
             }
             else if (tabControl.SelectedIndex == 2)
             {
-                lncCpuHistory.Series.Clear();
-                OnUpdateTasksRequested?.Invoke(this, e);
-                refreshTasksTimer.Start();
-                rbAutomatic.Checked = true;
-                rbManual.Checked = false;
+                OnUpdateCpuRamRequested?.Invoke(this, e);
             }
         }
 

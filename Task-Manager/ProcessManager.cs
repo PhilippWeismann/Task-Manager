@@ -29,10 +29,6 @@ namespace Task_Manager
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
             _mainView.OnUpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
-            //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
-            ////OnShowProcessesAsStringsRequested += new EventHandler<List<string[]>>(_mainView.UpdateListView);
-            ////OnShowProcessesForChartRequested += new EventHandler<List<ProcessWithCount>>(_mainView.UpdatePiechart);
-
             _mainView.OnShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
 
@@ -63,8 +59,6 @@ namespace Task_Manager
             }
 
 
-            //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
-            //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
             _mainView.UpdatePiechart(updatedProcesses);
             _mainView.UpdateListView(updatedProcesses);
         }
