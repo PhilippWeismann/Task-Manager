@@ -11,7 +11,7 @@ namespace Task_Manager
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
         {
-            return x.MemoryUseage.CompareTo(y.MemoryUseage);
+            return x.MemoryUsageMB.CompareTo(y.MemoryUsageMB);
         }
     }
     public class SortByProcessCount : IComparer<ProcessWithCount>
@@ -37,12 +37,12 @@ namespace Task_Manager
         private List<Process> allProcesses = new List<Process>();
         public Process Process { get; set; }
         public int Count { get { return allProcesses.Count; } }
-        public double MemoryUseage
+        public double MemoryUsageMB
         {
             get { return Math.Round(_memoryUsage,3); }
             set { _memoryUsage = value; }
         }
-        public string MemoryUseageOfAll { get; set; }
+        public string MemoryUseageOfAllMB { get; set; }
         public string IdOfAll { get; set; }
         public int ThreadsOfAll { get; set; }
 
@@ -52,8 +52,8 @@ namespace Task_Manager
             Process = p;
 
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
-            MemoryUseage = memoryUseageMB;
-            MemoryUseageOfAll = memoryUseageMB.ToString();
+            MemoryUsageMB = memoryUseageMB;
+            MemoryUseageOfAllMB = memoryUseageMB.ToString();
             IdOfAll = p.Id.ToString();
             ThreadsOfAll = p.Threads.Count;
         }
@@ -62,8 +62,8 @@ namespace Task_Manager
         {
             allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
-            MemoryUseage += memoryUseageMB;
-            MemoryUseageOfAll += ", " + memoryUseageMB.ToString();
+            MemoryUsageMB += memoryUseageMB;
+            MemoryUseageOfAllMB += ", " + memoryUseageMB.ToString();
             IdOfAll += ", " + p.Id.ToString();
             ThreadsOfAll += p.Threads.Count;
         }

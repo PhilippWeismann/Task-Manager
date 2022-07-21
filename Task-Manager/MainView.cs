@@ -66,19 +66,19 @@ namespace Task_Manager
             processes.Sort(smem);
             processes.Reverse();
 
-            double memSizeOfFifthProcess = processes[5].MemoryUseage;
+            double memSizeOfFifthProcess = processes[5].MemoryUsageMB;
 
             //List
 
             foreach (var process in processes)
             {
-                if (process.MemoryUseage > memSizeOfFifthProcess)
+                if (process.MemoryUsageMB > memSizeOfFifthProcess)
                 {
 
                     PieSeries chart = new PieSeries
                     {
-                        Title = process.Process.ProcessName + " (" + process.MemoryUseage + " MB)",
-                        Values = new ChartValues<double> { process.MemoryUseage },
+                        Title = process.Process.ProcessName + " (" + process.MemoryUsageMB + " MB)",
+                        Values = new ChartValues<double> { process.MemoryUsageMB },
                         PushOut = 10,
                         DataLabels = true,
                         LabelPosition = PieLabelPosition.InsideSlice,
@@ -88,7 +88,7 @@ namespace Task_Manager
                 }
                 else
                 {
-                    memoryOfOther += process.MemoryUseage;
+                    memoryOfOther += process.MemoryUsageMB;
                 }
             }
 

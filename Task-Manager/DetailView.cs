@@ -19,9 +19,9 @@ namespace Task_Manager
             tbxTaskName.Text = process.Process.ProcessName;
             tbxNumberOfTasks.Text = process.Count.ToString();
             tbxID.Text = process.IdOfAll;
-            tbxMemoryUseage.Text = process.MemoryUseageOfAll;
+            tbxMemoryUseage.Text = process.MemoryUseageOfAllMB;
             tbxThreads.Text = process.ThreadsOfAll.ToString();
-            tbxSumMemoryUseage.Text = process.MemoryUseage.ToString();
+            tbxSumMemoryUseage.Text = process.MemoryUsageMB.ToString();
         }
     }
 }
