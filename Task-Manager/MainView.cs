@@ -15,6 +15,7 @@ namespace Task_Manager
     public partial class MainView : Form
     {
         public event EventHandler OnUpdateTasksRequested;
+        public event EventHandler OnUpdateCpuRamRequested;
         public event EventHandler<ProcessWithCount> OnShowDetail;
 
         int reversecount = 0;
@@ -25,12 +26,9 @@ namespace Task_Manager
         public MainView()
         {
             InitializeComponent();
-            OnUpdateTasksRequested?.Invoke(this, new EventArgs());
-            gauCPU.From = 0;
-            gauCPU.To = 100;
+            refreshCpuRamTimer.Start();
 
-            gauRAM.From = 0;
-            gauRAM.To = 100;
+            OnUpdateTasksRequested?.Invoke(this, new EventArgs());
 
             btnUpdate.Visible = true;
 
@@ -132,11 +130,6 @@ namespace Task_Manager
             }
         }
 
-        public void UpdateGauges(int cpu, int ram)  
-        {
-            gauRAM.Value = ram;
-            gauCPU.Value = cpu; 
-        }
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
@@ -216,36 +209,44 @@ namespace Task_Manager
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl.SelectedIndex!=0)
+            if (tabControl.SelectedIndex == 0)
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
-                //refreshtimer.Stop();
+                refreshTasksTimer.Start();
+                rbAutomatic.Checked = true;
+                rbManual.Checked = false;
             }
-            else if(rbAutomatic.Checked)
+            else if (tabControl.SelectedIndex == 1)
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
-                refreshtimer.Start();
+                refreshTasksTimer.Stop();
+                rbAutomatic.Checked = false;
+                rbManual.Checked = true;
             }
-            else
+            else if (tabControl.SelectedIndex == 2)
             {
+                lncCpuHistory.Series.Clear();
                 OnUpdateTasksRequested?.Invoke(this, e);
+                refreshTasksTimer.Start();
+                rbAutomatic.Checked = true;
+                rbManual.Checked = false;
             }
         }
 
         private void rbAutomatic_CheckedChanged(object sender, EventArgs e)
         {
-            refreshtimer.Start();
+            refreshTasksTimer.Start();
 
             if (rbAutomatic.Checked)
             {
                 btnUpdate.Visible = false;
                 OnUpdateTasksRequested?.Invoke(this, e);
-                refreshtimer.Start();
+                refreshTasksTimer.Start();
                 lblUpdateMode.Text = "Update-Mode: automatic";
             }
             else
             {
-                refreshtimer.Stop();
+                refreshTasksTimer.Stop();
                 btnUpdate.Visible = true;
                 lblUpdateMode.Text = "Update-Mode: manual";
             }
@@ -255,6 +256,11 @@ namespace Task_Manager
         private void MainView_Load(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void refreshCpuRamTimer_Tick(object sender, EventArgs e)
+        {
+            OnUpdateCpuRamRequested?.Invoke(this, e);
         }
     }
 }

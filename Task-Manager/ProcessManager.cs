@@ -28,6 +28,7 @@ namespace Task_Manager
             _ramHistory = new List<int>();
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
+            _mainView.OnUpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
             //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
             ////OnShowProcessesAsStringsRequested += new EventHandler<List<string[]>>(_mainView.UpdateListView);
             ////OnShowProcessesForChartRequested += new EventHandler<List<ProcessWithCount>>(_mainView.UpdatePiechart);
@@ -62,7 +63,14 @@ namespace Task_Manager
             }
 
 
+            //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
+            //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
+            _mainView.UpdatePiechart(updatedProcesses);
+            _mainView.UpdateListView(updatedProcesses);
+        }
 
+        private void OnUpdateCpuRamRequested(object sender, EventArgs e)
+        {
             if (_cpuHistory.Count > 20)
             {
                 _cpuHistory.RemoveAt(0);
@@ -72,19 +80,13 @@ namespace Task_Manager
             _cpuHistory.Add(InternalProcesses.GetCurrentCPUPercentage());
             _ramHistory.Add(InternalProcesses.GetCurrentRAMPercentage());
 
-            //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
-            //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
-            _mainView.UpdatePiechart(updatedProcesses);
-            _mainView.UpdateListView(updatedProcesses);
-            _mainView.UpdateGauges(InternalProcesses.GetCurrentCPUPercentage(), InternalProcesses.GetCurrentRAMPercentage());
-
             List<List<int>> chartlist = new List<List<int>>();
             chartlist.Add(_cpuHistory);
             chartlist.Add(_ramHistory);
 
             string[] labels = new string[] { "CPU Percentage", "RAM Percentage" };
 
-            _mainView.UpdateLineChart(chartlist, labels );
+            _mainView.UpdateLineChart(chartlist, labels);
         }
         #endregion
 

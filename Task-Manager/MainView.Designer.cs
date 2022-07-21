@@ -40,7 +40,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblUpdateMode = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbManual = new System.Windows.Forms.RadioButton();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.rbAutomatic = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,14 +51,11 @@
             this.btnChangeSorting = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gauRAM = new LiveCharts.WinForms.SolidGauge();
             this.pieChart = new LiveCharts.WinForms.PieChart();
-            this.gauCPU = new LiveCharts.WinForms.SolidGauge();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lncCpuHistory = new LiveCharts.WinForms.CartesianChart();
-            this.refreshtimer = new System.Windows.Forms.Timer(this.components);
+            this.refreshTasksTimer = new System.Windows.Forms.Timer(this.components);
+            this.refreshCpuRamTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -145,7 +142,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblUpdateMode);
-            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.rbManual);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.rbAutomatic);
             this.groupBox2.Location = new System.Drawing.Point(701, 207);
@@ -164,17 +161,17 @@
             this.lblUpdateMode.TabIndex = 6;
             this.lblUpdateMode.Text = "Update-Mode: manual";
             // 
-            // radioButton2
+            // rbManual
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 75);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(79, 24);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "manual";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbManual.AutoSize = true;
+            this.rbManual.Checked = true;
+            this.rbManual.Location = new System.Drawing.Point(6, 75);
+            this.rbManual.Name = "rbManual";
+            this.rbManual.Size = new System.Drawing.Size(79, 24);
+            this.rbManual.TabIndex = 8;
+            this.rbManual.TabStop = true;
+            this.rbManual.Text = "manual";
+            this.rbManual.UseVisualStyleBackColor = true;
             // 
             // btnUpdate
             // 
@@ -272,47 +269,14 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.gauRAM);
             this.tabPage2.Controls.Add(this.pieChart);
-            this.tabPage2.Controls.Add(this.gauCPU);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(949, 443);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Memory Useage (Piechart), CPU/RAM utilization";
+            this.tabPage2.Text = "Memory Useage ";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(729, 240);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "RAM";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(729, 79);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "CPU";
-            // 
-            // gauRAM
-            // 
-            this.gauRAM.Location = new System.Drawing.Point(692, 240);
-            this.gauRAM.Margin = new System.Windows.Forms.Padding(10);
-            this.gauRAM.Name = "gauRAM";
-            this.gauRAM.Size = new System.Drawing.Size(114, 123);
-            this.gauRAM.TabIndex = 7;
-            this.gauRAM.Text = "RAM - Usage";
             // 
             // pieChart
             // 
@@ -322,14 +286,6 @@
             this.pieChart.Size = new System.Drawing.Size(594, 432);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "pieChart1";
-            // 
-            // gauCPU
-            // 
-            this.gauCPU.Location = new System.Drawing.Point(692, 79);
-            this.gauCPU.Name = "gauCPU";
-            this.gauCPU.Size = new System.Drawing.Size(114, 115);
-            this.gauCPU.TabIndex = 7;
-            this.gauCPU.Text = "CPU - Usage";
             // 
             // tabPage3
             // 
@@ -352,10 +308,15 @@
             this.lncCpuHistory.TabIndex = 0;
             this.lncCpuHistory.Text = "cartesianChart1";
             // 
-            // refreshtimer
+            // refreshTasksTimer
             // 
-            this.refreshtimer.Interval = 2000;
-            this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
+            this.refreshTasksTimer.Interval = 2000;
+            this.refreshTasksTimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
+            // 
+            // refreshCpuRamTimer
+            // 
+            this.refreshCpuRamTimer.Interval = 1000;
+            this.refreshCpuRamTimer.Tick += new System.EventHandler(this.refreshCpuRamTimer_Tick);
             // 
             // MainView
             // 
@@ -374,7 +335,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -394,23 +354,20 @@
         private ColumnHeader cThreads;
         private Button btnDetails;
         private LiveCharts.WinForms.PieChart pieChart;
-        private LiveCharts.WinForms.SolidGauge gauCPU;
-        private LiveCharts.WinForms.SolidGauge gauRAM;
         private Button btnChangeSorting;
         private RadioButton rbTaskCount;
         private RadioButton rbThreads;
         private Label lblSorting;
         private RadioButton rbMemory;
-        private System.Windows.Forms.Timer refreshtimer;
+        private System.Windows.Forms.Timer refreshTasksTimer;
         private RadioButton rbAutomatic;
         private Button btnUpdate;
         private GroupBox groupBox2;
         private Label lblUpdateMode;
-        private RadioButton radioButton2;
+        private RadioButton rbManual;
         private GroupBox groupBox1;
-        private Label label3;
-        private Label label2;
         private TabPage tabPage3;
         private LiveCharts.WinForms.CartesianChart lncCpuHistory;
+        private System.Windows.Forms.Timer refreshCpuRamTimer;
     }
 }
