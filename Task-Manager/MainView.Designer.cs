@@ -53,6 +53,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.lncCpuRamHistory = new LiveCharts.WinForms.CartesianChart();
             this.refreshTasksTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshCpuRamTimer = new System.Windows.Forms.Timer(this.components);
@@ -293,6 +294,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblInfo);
             this.tabPage3.Controls.Add(this.lncCpuRamHistory);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
@@ -300,15 +302,24 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(949, 443);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "CPU useage history";
+            this.tabPage3.Text = "CPU / RAM useage history";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(5, 11);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(383, 20);
+            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Text = "Chart shows the CPU / RAM usage of the last 20 seconds:";
             // 
             // lncCpuRamHistory
             // 
-            this.lncCpuRamHistory.Location = new System.Drawing.Point(2, 4);
+            this.lncCpuRamHistory.Location = new System.Drawing.Point(2, 44);
             this.lncCpuRamHistory.Margin = new System.Windows.Forms.Padding(2);
             this.lncCpuRamHistory.Name = "lncCpuRamHistory";
-            this.lncCpuRamHistory.Size = new System.Drawing.Size(943, 435);
+            this.lncCpuRamHistory.Size = new System.Drawing.Size(943, 395);
             this.lncCpuRamHistory.TabIndex = 0;
             this.lncCpuRamHistory.Text = "cartesianChart1";
             // 
@@ -340,6 +351,7 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +385,6 @@
         private TabPage tabPage3;
         private LiveCharts.WinForms.CartesianChart lncCpuRamHistory;
         private System.Windows.Forms.Timer refreshCpuRamTimer;
+        private Label lblInfo;
     }
 }

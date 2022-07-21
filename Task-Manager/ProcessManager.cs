@@ -78,7 +78,7 @@ namespace Task_Manager
             chartlist.Add(_cpuHistory);
             chartlist.Add(_ramHistory);
 
-            string[] labels = new string[] { "CPU Percentage", "RAM Percentage" };
+            string[] labels = new string[] { "CPU usage [%]", "RAM usage [%]" };
 
             _mainView.UpdateLineChart(chartlist, labels);
         }

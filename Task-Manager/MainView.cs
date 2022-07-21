@@ -38,8 +38,22 @@ namespace Task_Manager
             new Axis
             {
                 MinValue = 0,
-                MaxValue = 100
+                MaxValue = 100,
+                Title = "Percentage [%]"
             }) ;
+
+            
+            lncCpuRamHistory.AxisX.Clear();
+            lncCpuRamHistory.AxisX.Add(
+            new Axis
+            {
+                MinValue = 0,
+                MaxValue = 20,
+                Title = "Time [s]"
+            });
+
+
+
 
             lncCpuRamHistory.LegendLocation = LegendLocation.Right;
             lncCpuRamHistory.DefaultLegend.Visibility = Visibility.Visible;
