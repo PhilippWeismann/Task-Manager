@@ -185,6 +185,10 @@ namespace Task_Manager
                 ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
                 OnShowDetail?.Invoke(this, selectedProcess);
             }
+            else if (selected.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Please select any task in the List to get detailed Information", "No Task selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnChangeSorting_Click(object sender, EventArgs e)
@@ -259,6 +263,21 @@ namespace Task_Manager
         private void refreshCpuRamTimer_Tick(object sender, EventArgs e)
         {
             OnUpdateCpuRamRequested?.Invoke(this, e);
+        }
+
+        private void rbTaskCount_Click(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void rbThreads_Click(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void rbMemory_Click(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
         }
     }
 }

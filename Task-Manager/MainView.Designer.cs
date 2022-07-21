@@ -73,6 +73,7 @@
             this.cThreads});
             this.livTasks.Location = new System.Drawing.Point(4, 6);
             this.livTasks.Margin = new System.Windows.Forms.Padding(1);
+            this.livTasks.MultiSelect = false;
             this.livTasks.Name = "livTasks";
             this.livTasks.Size = new System.Drawing.Size(680, 433);
             this.livTasks.TabIndex = 0;
@@ -225,6 +226,7 @@
             this.rbMemory.TabIndex = 1;
             this.rbMemory.Text = "Memory Usage";
             this.rbMemory.UseVisualStyleBackColor = true;
+            this.rbMemory.Click += new System.EventHandler(this.rbMemory_Click);
             // 
             // rbThreads
             // 
@@ -235,6 +237,7 @@
             this.rbThreads.TabIndex = 3;
             this.rbThreads.Text = "Threads";
             this.rbThreads.UseVisualStyleBackColor = true;
+            this.rbThreads.Click += new System.EventHandler(this.rbThreads_Click);
             // 
             // rbTaskCount
             // 
@@ -247,24 +250,25 @@
             this.rbTaskCount.TabStop = true;
             this.rbTaskCount.Text = "Task Count";
             this.rbTaskCount.UseVisualStyleBackColor = true;
+            this.rbTaskCount.Click += new System.EventHandler(this.rbTaskCount_Click);
             // 
             // btnChangeSorting
             // 
             this.btnChangeSorting.Location = new System.Drawing.Point(16, 141);
             this.btnChangeSorting.Name = "btnChangeSorting";
-            this.btnChangeSorting.Size = new System.Drawing.Size(130, 33);
+            this.btnChangeSorting.Size = new System.Drawing.Size(181, 33);
             this.btnChangeSorting.TabIndex = 5;
-            this.btnChangeSorting.Text = "Up / Down";
+            this.btnChangeSorting.Text = "ascending / descending";
             this.btnChangeSorting.UseVisualStyleBackColor = true;
             this.btnChangeSorting.Click += new System.EventHandler(this.btnChangeSorting_Click);
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(717, 404);
+            this.btnDetails.Location = new System.Drawing.Point(782, 407);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(130, 33);
+            this.btnDetails.Size = new System.Drawing.Size(161, 33);
             this.btnDetails.TabIndex = 0;
-            this.btnDetails.Text = "Show details";
+            this.btnDetails.Text = "Show details of Task";
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // tabPage2
