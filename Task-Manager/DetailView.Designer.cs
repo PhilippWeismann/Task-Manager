@@ -151,18 +151,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(610, 240);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 32);
+            this.label7.Size = new System.Drawing.Size(77, 32);
             this.label7.TabIndex = 16;
-            this.label7.Text = "in Byte";
+            this.label7.Text = "in MB";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(610, 299);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 32);
+            this.label8.Size = new System.Drawing.Size(77, 32);
             this.label8.TabIndex = 17;
-            this.label8.Text = "in Byte";
+            this.label8.Text = "in MB";
             // 
             // DetailView
             // 

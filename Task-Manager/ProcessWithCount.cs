@@ -63,28 +63,9 @@ namespace Task_Manager
             allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
             MemoryUsageMB += memoryUseageMB;
-            MemoryUseageOfAllMB += ", " + memoryUseageMB.ToString();
-            IdOfAll += ", " + p.Id.ToString();
+            MemoryUseageOfAllMB += "; " + memoryUseageMB.ToString();
+            IdOfAll += "; " + p.Id.ToString();
             ThreadsOfAll += p.Threads.Count;
         }
-
-        //public ProcessWithCount(Process p)
-        //{
-        //    allProcesses.Add(p);
-        //    Process = p;
-        //    MemoryUseage = p.PagedMemorySize64;
-        //    MemoryUseageOfAll = p.PagedMemorySize64.ToString();
-        //    IdOfAll = p.Id.ToString();
-        //    ThreadsOfAll = p.Threads.Count;
-        //}
-
-        //public void AddProcess(Process p)
-        //{
-        //    allProcesses.Add(p);
-        //    MemoryUseage += p.PagedMemorySize64;
-        //    MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
-        //    IdOfAll += ", " + p.Id.ToString();
-        //    ThreadsOfAll += p.Threads.Count;
-        //}
     }
 }
