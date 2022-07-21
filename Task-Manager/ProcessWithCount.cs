@@ -49,7 +49,7 @@ namespace Task_Manager
         public int ThreadsOfAll { get; set; }
         #endregion
 
-        public ProcessWithCount(Process p)
+        public ProcessWithCount(Process p)  //constructor
         {
             _allProcesses.Add(p);
             Process = p;
@@ -61,7 +61,7 @@ namespace Task_Manager
             ThreadsOfAll = p.Threads.Count;
         }
 
-        public void AddProcess(Process p)
+        public void AddProcess(Process p) //if a processname is twice use this method to increase the counter and sum the data
         {
             _allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;

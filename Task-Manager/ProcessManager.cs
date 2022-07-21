@@ -10,13 +10,14 @@ namespace Task_Manager
 {
     internal class ProcessManager
     {
-        InternalProcesses _processes;
-        MainView _mainView;
-        List<int> _cpuHistory;
-        List<int> _ramHistory;
-        List<ProcessWithCount> _updatedProcesses;
+        InternalProcesses _processes;   //Model
+        List<int> _cpuHistory;  //Model
+        List<int> _ramHistory;  //Model
+        List<ProcessWithCount> _updatedProcesses;  //Model
 
-        public ProcessManager(MainView mainView, InternalProcesses processes)
+        MainView _mainView; //View
+
+        public ProcessManager(MainView mainView, InternalProcesses processes)   //Presenter
         {
             _processes = processes;
             _mainView = mainView;
