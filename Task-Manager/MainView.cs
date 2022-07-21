@@ -21,8 +21,6 @@ namespace Task_Manager
         int reversecount = 0;
         bool reverse = false;
 
-
-
         public MainView()
         {
             InitializeComponent();
@@ -32,7 +30,8 @@ namespace Task_Manager
 
             btnUpdate.Visible = true;
 
-            lncCpuRamHistory.DisableAnimations=true;
+            #region linechart
+            lncCpuRamHistory.DisableAnimations = true;
             lncCpuRamHistory.AxisY.Clear();
             lncCpuRamHistory.AxisY.Add(
             new Axis
@@ -40,9 +39,8 @@ namespace Task_Manager
                 MinValue = 0,
                 MaxValue = 100,
                 Title = "Percentage [%]"
-            }) ;
+            });
 
-            
             lncCpuRamHistory.AxisX.Clear();
             lncCpuRamHistory.AxisX.Add(
             new Axis
@@ -52,25 +50,16 @@ namespace Task_Manager
                 Title = "Time [s]"
             });
 
-
-
-
             lncCpuRamHistory.LegendLocation = LegendLocation.Right;
             lncCpuRamHistory.DefaultLegend.Visibility = Visibility.Visible;
+            #endregion
 
             pieChart.LegendLocation = LegendLocation.Right;
             pieChart.DefaultLegend.Visibility = Visibility.Visible;
 
-        }   
-
-
-
-
-        public void bwRefreshTasks_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //OnUpdateTasksRequested?.Invoke(this, e);
         }
 
+        #region public methods
         public void UpdatePiechart(List<ProcessWithCount> processes)
         {
             SeriesCollection series = new SeriesCollection();
@@ -82,9 +71,8 @@ namespace Task_Manager
 
             double memSizeOfFifthProcess = processes[5].MemoryUsageMB;
 
-            //List
-
-            foreach (var process in processes)
+            #region largest 5 Tasks
+            foreach (var process in processes)   
             {
                 if (process.MemoryUsageMB > memSizeOfFifthProcess)
                 {
@@ -105,7 +93,8 @@ namespace Task_Manager
                     memoryOfOther += process.MemoryUsageMB;
                 }
             }
-
+            #endregion
+            #region sum of other tasks
             PieSeries chartOfOther = new PieSeries
             {
                 Title = "other",
@@ -116,45 +105,16 @@ namespace Task_Manager
                 LabelPoint = chartPoint => string.Format("{0} ({1:P})", "other", chartPoint.Participation)
             };
             series.Add(chartOfOther);
+            #endregion
 
             pieChart.Series = series;
-
-        }
-
-        public void SortProcesses (List<ProcessWithCount> processes)
-        {
-
-            if (rbTaskCount.Checked)
-            {
-                SortByProcessCount scount = new SortByProcessCount();
-                processes.Sort(scount);
-            }
-            else if (rbMemory.Checked)
-            {
-                SortByMemorySize smem = new SortByMemorySize();
-                processes.Sort(smem);
-            }
-            else if (rbThreads.Checked)
-            {
-                SortByThreads sthreads = new SortByThreads();
-
-                processes.Sort(sthreads);
-            }
-
-            if (reverse)
-            {
-                processes.Reverse();
-            }
-        }
-
+        }     
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
             livTasks.Items.Clear();
 
-            SortProcesses(processes);
-
-            
+            SortProcesses(processes);            
 
             foreach (ProcessWithCount process in processes)
             {
@@ -181,10 +141,42 @@ namespace Task_Manager
                 series.Add(line);
                 counter++;
             }
-
-            
+                        
             lncCpuRamHistory.Series = series;
         }
+        #endregion
+
+        #region private methods
+        private void MainView_Load(object sender, EventArgs e)
+        {
+            OnUpdateTasksRequested?.Invoke(this, e);
+        }
+
+        private void SortProcesses(List<ProcessWithCount> processes)
+        {
+            if (rbTaskCount.Checked)
+            {
+                SortByProcessCount scount = new SortByProcessCount();
+                processes.Sort(scount);
+            }
+            else if (rbMemory.Checked)
+            {
+                SortByMemorySize smem = new SortByMemorySize();
+                processes.Sort(smem);
+            }
+            else if (rbThreads.Checked)
+            {
+                SortByThreads sthreads = new SortByThreads();
+
+                processes.Sort(sthreads);
+            }
+
+            if (reverse)
+            {
+                processes.Reverse();
+            }
+        }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
@@ -269,11 +261,6 @@ namespace Task_Manager
 
         }
 
-        private void MainView_Load(object sender, EventArgs e)
-        {
-            OnUpdateTasksRequested?.Invoke(this, e);
-        }
-
         private void refreshCpuRamTimer_Tick(object sender, EventArgs e)
         {
             OnUpdateCpuRamRequested?.Invoke(this, e);
@@ -293,5 +280,6 @@ namespace Task_Manager
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
+        #endregion
     }
 }

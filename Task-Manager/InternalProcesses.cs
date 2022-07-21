@@ -9,37 +9,22 @@ namespace Task_Manager
 {
     internal class InternalProcesses
     {
-
         #region Members
         List<Process> _processes;
-        //private Task _updateProcessesTask;
-        //public event EventHandler<List<string[]>> ModelUpdated;
         private static PerformanceCounter cpuCounter;
         private static PerformanceCounter ramCounter;
         #endregion
-
-        #region Properties
-        public List<Process> Processes
-        {
-            get { return _processes; }
-            private set { _processes = value; }
-        }
-        #endregion
-
 
         #region Construktor
         public InternalProcesses()
         {
             _processes = Process.GetProcesses().ToList();
-            //_updateProcessesTask = Task.CompletedTask;
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
         }
         #endregion
 
-
         #region Methods
-
         public List<ProcessWithCount> GetCurrentProcessesWithCount()
         {
             List<ProcessWithCount> list = new List<ProcessWithCount>();
@@ -56,10 +41,8 @@ namespace Task_Manager
                     list.Add(new ProcessWithCount(item));
                 }
             }          
-
             return list;
         }
-
 
         public static string[] ProcessWithCountToStringArrray(ProcessWithCount p)
         {
@@ -87,20 +70,17 @@ namespace Task_Manager
                 listIndex = -1;
                 return false;
             }
-
         }
 
         public static int GetCurrentCPUPercentage()
         {        
             return Convert.ToInt32(Math.Round(cpuCounter.NextValue()));
         }
-        
+
         public static int GetCurrentRAMPercentage()
         {
             return Convert.ToInt32(ramCounter.NextValue());
         }
-
         #endregion
-
     }
 }

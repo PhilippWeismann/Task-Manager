@@ -19,8 +19,7 @@ namespace Task_Manager
 
             ProcessManager manager = new ProcessManager(mainView, processes);
 
-            Application.Run(mainView);
-            
+            Application.Run(mainView);            
         }
     }
 }

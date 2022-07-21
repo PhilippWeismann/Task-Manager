@@ -14,11 +14,7 @@ namespace Task_Manager
         MainView _mainView;
         List<int> _cpuHistory;
         List<int> _ramHistory;
-
-        //public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
-        //public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
-
-        List<ProcessWithCount> updatedProcesses = new List<ProcessWithCount>();
+        List<ProcessWithCount> _updatedProcesses;
 
         public ProcessManager(MainView mainView, InternalProcesses processes)
         {
@@ -32,7 +28,7 @@ namespace Task_Manager
             _mainView.OnShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
 
-        #region ohne Count
+        #region without Count //didn't use because we need the count by same Tasks
         //private void OnUpdateTasksRequested(object sender, EventArgs e)
         //{
         //    List<Process> updatedProcesses = _processes.GetCurrentProcesses();
@@ -47,21 +43,15 @@ namespace Task_Manager
         //}
         #endregion
 
-        #region mit Count
+        #region with Count
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            updatedProcesses = _processes.GetCurrentProcessesWithCount();
-            List<string[]> updatedProcessStings = new List<string[]>();
+            _updatedProcesses = _processes.GetCurrentProcessesWithCount();
 
-            foreach (ProcessWithCount p in updatedProcesses)
-            {
-                updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
-            }
-
-
-            _mainView.UpdatePiechart(updatedProcesses);
-            _mainView.UpdateListView(updatedProcesses);
+            _mainView.UpdatePiechart(_updatedProcesses);
+            _mainView.UpdateListView(_updatedProcesses);
         }
+        #endregion
 
         private void OnUpdateCpuRamRequested(object sender, EventArgs e)
         {
@@ -82,7 +72,6 @@ namespace Task_Manager
 
             _mainView.UpdateLineChart(chartlist, labels);
         }
-        #endregion
 
         private void OnShowDetailRequested(object sender, ProcessWithCount itemToShow)
         {

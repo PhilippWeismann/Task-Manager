@@ -34,7 +34,6 @@
             this.cMemory = new System.Windows.Forms.ColumnHeader();
             this.cPriority = new System.Windows.Forms.ColumnHeader();
             this.cThreads = new System.Windows.Forms.ColumnHeader();
-            this.bwRefreshTasks = new System.ComponentModel.BackgroundWorker();
             this.lblNumberOfProcesses = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -102,10 +101,6 @@
             this.cThreads.Text = "Threads";
             this.cThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cThreads.Width = 120;
-            // 
-            // bwRefreshTasks
-            // 
-            this.bwRefreshTasks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRefreshTasks_DoWork);
             // 
             // lblNumberOfProcesses
             // 
@@ -378,7 +373,6 @@
         private ColumnHeader cTaskName;
         private ColumnHeader cMemory;
         private ColumnHeader cPriority;
-        private System.ComponentModel.BackgroundWorker bwRefreshTasks;
         private Label lblNumberOfProcesses;
         private TabControl tabControl;
         private TabPage tabPage1;
