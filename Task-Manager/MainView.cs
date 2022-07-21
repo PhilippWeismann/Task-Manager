@@ -50,7 +50,6 @@ namespace Task_Manager
             SeriesCollection series = new SeriesCollection();
             long memoryOfOther = 0;
 
-
             SortByMemorySize smem = new SortByMemorySize();
             processes.Sort(smem);
             processes.Reverse();
@@ -185,8 +184,6 @@ namespace Task_Manager
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        
-
         private void refreshtimer_Tick(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
@@ -197,7 +194,7 @@ namespace Task_Manager
             if (tabControl.SelectedIndex!=0)
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
-                refreshtimer.Stop();
+                //refreshtimer.Stop();
             }
             else if(rbAutomatic.Checked)
             {
@@ -219,11 +216,13 @@ namespace Task_Manager
                 btnUpdate.Visible = false;
                 OnUpdateTasksRequested?.Invoke(this, e);
                 refreshtimer.Start();
+                lblUpdateMode.Text = "Update-Mode: automatic";
             }
             else
             {
                 refreshtimer.Stop();
                 btnUpdate.Visible = true;
+                lblUpdateMode.Text = "Update-Mode: manual";
             }
 
         }

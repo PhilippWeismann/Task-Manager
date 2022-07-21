@@ -39,7 +39,7 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUpdateMode = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.rbAutomatic = new System.Windows.Forms.RadioButton();
@@ -57,8 +57,8 @@
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.gauCPU = new LiveCharts.WinForms.SolidGauge();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.refreshtimer = new System.Windows.Forms.Timer(this.components);
             this.lncCpuHistory = new LiveCharts.WinForms.CartesianChart();
+            this.refreshtimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -145,7 +145,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblUpdateMode);
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.rbAutomatic);
@@ -157,16 +157,16 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
-            // label1
+            // lblUpdateMode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(340, 40);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Update-Mode: automatic";
+            this.lblUpdateMode.AutoSize = true;
+            this.lblUpdateMode.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblUpdateMode.Location = new System.Drawing.Point(10, 27);
+            this.lblUpdateMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblUpdateMode.Name = "lblUpdateMode";
+            this.lblUpdateMode.Size = new System.Drawing.Size(308, 40);
+            this.lblUpdateMode.TabIndex = 6;
+            this.lblUpdateMode.Text = "Update-Mode: manual";
             // 
             // radioButton2
             // 
@@ -335,6 +335,7 @@
             this.pieChart.Size = new System.Drawing.Size(965, 691);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "pieChart1";
+            this.pieChart.DisableAnimations = true;
             // 
             // gauCPU
             // 
@@ -356,11 +357,6 @@
             this.tabPage3.Text = "CPU useage history";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // refreshtimer
-            // 
-            this.refreshtimer.Interval = 2000;
-            this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
-            // 
             // lncCpuHistory
             // 
             this.lncCpuHistory.Location = new System.Drawing.Point(3, 6);
@@ -368,6 +364,11 @@
             this.lncCpuHistory.Size = new System.Drawing.Size(1530, 696);
             this.lncCpuHistory.TabIndex = 0;
             this.lncCpuHistory.Text = "cartesianChart1";
+            // 
+            // refreshtimer
+            // 
+            this.refreshtimer.Interval = 2000;
+            this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
             // 
             // MainView
             // 
@@ -417,7 +418,7 @@
         private RadioButton rbAutomatic;
         private Button btnUpdate;
         private GroupBox groupBox2;
-        private Label label1;
+        private Label lblUpdateMode;
         private RadioButton radioButton2;
         private GroupBox groupBox1;
         private Label label3;
