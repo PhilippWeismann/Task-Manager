@@ -12,9 +12,10 @@ namespace Task_Manager
     {
         InternalProcesses _processes;
         MainView _mainView;
+        List<int> _cpuHistory;
 
-        public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
-        public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
+        //public event EventHandler<List<string[]>> OnShowProcessesAsStringsRequested;
+        //public event EventHandler<List<ProcessWithCount>> OnShowProcessesForChartRequested;
 
         List<ProcessWithCount> updatedProcesses = new List<ProcessWithCount>();
 
@@ -22,6 +23,7 @@ namespace Task_Manager
         {
             _processes = processes;
             _mainView = mainView;
+            _cpuHistory = new List<int>();
 
             _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
             //_processes.ModelUpdated += new EventHandler<List<string[]>>(_mainView.UpdateListView);
@@ -57,11 +59,14 @@ namespace Task_Manager
                 updatedProcessStings.Add(InternalProcesses.ProcessWithCountToStringArrray(p));
             }
 
+            _cpuHistory.Add(InternalProcesses.GetCurrentCPU());
+
             //OnShowProcessesAsStringsRequested?.Invoke(this, updatedProcessStings);
             //OnShowProcessesForChartRequested?.Invoke(this, updatedProcesses);
             _mainView.UpdatePiechart(updatedProcesses);
             _mainView.UpdateListView(updatedProcesses);
-            _mainView.UpdateGauges(updatedProcesses);
+            _mainView.UpdateGauges(InternalProcesses.GetCurrentCPU(), InternalProcesses.GetCurrentRAM());
+            _mainView.UpdateLineChart(_cpuHistory);
         }
         #endregion
 

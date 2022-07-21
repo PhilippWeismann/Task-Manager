@@ -14,7 +14,8 @@ namespace Task_Manager
         List<Process> _processes;
         //private Task _updateProcessesTask;
         //public event EventHandler<List<string[]>> ModelUpdated;
-
+        private static PerformanceCounter cpuCounter;
+        private static PerformanceCounter ramCounter;
         #endregion
 
         #region Properties
@@ -31,6 +32,8 @@ namespace Task_Manager
         {
             _processes = Process.GetProcesses().ToList();
             //_updateProcessesTask = Task.CompletedTask;
+            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
         }
         #endregion
 
@@ -85,6 +88,16 @@ namespace Task_Manager
                 return false;
             }
 
+        }
+
+        public static int GetCurrentCPU()
+        {        
+            return Convert.ToInt32(Math.Round(cpuCounter.NextValue()));
+        }
+        
+        public static int GetCurrentRAM()
+        {
+            return Convert.ToInt32(ramCounter.NextValue());
         }
 
         #endregion

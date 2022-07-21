@@ -16,8 +16,6 @@ namespace Task_Manager
     {
         public event EventHandler OnUpdateTasksRequested;
         public event EventHandler<ProcessWithCount> OnShowDetail;
-        private PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        private PerformanceCounter ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
 
         int reversecount = 0;
         bool reverse = false;
@@ -121,14 +119,11 @@ namespace Task_Manager
             }
         }
 
-
-
-        public void UpdateGauges(List<ProcessWithCount> processes)
+        public void UpdateGauges(int cpu, int ram)  
         {
-            gauRAM.Value = Convert.ToInt32(ramCounter.NextValue());
-            gauCPU.Value = Convert.ToInt32(Math.Round(cpuCounter.NextValue()));
+            gauRAM.Value = ram;
+            gauCPU.Value = cpu; 
         }
-
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
@@ -150,6 +145,16 @@ namespace Task_Manager
             lblNumberOfProcesses.Text = "Number of Processes: " + processcounter.ToString();
         }
 
+        public void UpdateLineChart(List<int> cpuHistory)
+        {
+            SeriesCollection series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<int>(cpuHistory),
+                }
+            };
+        }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
