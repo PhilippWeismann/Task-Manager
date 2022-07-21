@@ -51,15 +51,20 @@
             this.btnChangeSorting = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.gauRAM = new LiveCharts.WinForms.SolidGauge();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.gauCPU = new LiveCharts.WinForms.SolidGauge();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.refreshtimer = new System.Windows.Forms.Timer(this.components);
+            this.lncCpuHistory = new LiveCharts.WinForms.CartesianChart();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // livTasks
@@ -69,10 +74,10 @@
             this.cMemory,
             this.cPriority,
             this.cThreads});
-            this.livTasks.Location = new System.Drawing.Point(4, 6);
-            this.livTasks.Margin = new System.Windows.Forms.Padding(1);
+            this.livTasks.Location = new System.Drawing.Point(6, 10);
+            this.livTasks.Margin = new System.Windows.Forms.Padding(2);
             this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(680, 433);
+            this.livTasks.Size = new System.Drawing.Size(1102, 690);
             this.livTasks.TabIndex = 0;
             this.livTasks.UseCompatibleStateImageBehavior = false;
             this.livTasks.View = System.Windows.Forms.View.Details;
@@ -114,10 +119,12 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Location = new System.Drawing.Point(20, 19);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(957, 476);
+            this.tabControl.Size = new System.Drawing.Size(1555, 762);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -127,11 +134,11 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.livTasks);
             this.tabPage1.Controls.Add(this.btnDetails);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
+            this.tabPage1.Location = new System.Drawing.Point(8, 46);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(8);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(949, 443);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
+            this.tabPage1.Size = new System.Drawing.Size(1539, 708);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "List of Tasks";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -142,9 +149,11 @@
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.rbAutomatic);
-            this.groupBox2.Location = new System.Drawing.Point(701, 207);
+            this.groupBox2.Location = new System.Drawing.Point(1139, 331);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(242, 149);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox2.Size = new System.Drawing.Size(393, 238);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
@@ -152,9 +161,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Location = new System.Drawing.Point(10, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 25);
+            this.label1.Size = new System.Drawing.Size(340, 40);
             this.label1.TabIndex = 6;
             this.label1.Text = "Update-Mode: automatic";
             // 
@@ -162,9 +172,10 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 75);
+            this.radioButton2.Location = new System.Drawing.Point(10, 120);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(5);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(79, 24);
+            this.radioButton2.Size = new System.Drawing.Size(124, 36);
             this.radioButton2.TabIndex = 8;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "manual";
@@ -172,19 +183,21 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(16, 105);
+            this.btnUpdate.Location = new System.Drawing.Point(26, 168);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(130, 33);
+            this.btnUpdate.Size = new System.Drawing.Size(211, 53);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // rbAutomatic
             // 
             this.rbAutomatic.AutoSize = true;
-            this.rbAutomatic.Location = new System.Drawing.Point(6, 45);
+            this.rbAutomatic.Location = new System.Drawing.Point(10, 72);
+            this.rbAutomatic.Margin = new System.Windows.Forms.Padding(5);
             this.rbAutomatic.Name = "rbAutomatic";
-            this.rbAutomatic.Size = new System.Drawing.Size(183, 24);
+            this.rbAutomatic.Size = new System.Drawing.Size(291, 36);
             this.rbAutomatic.TabIndex = 8;
             this.rbAutomatic.Text = "automatic (every 2 sec)";
             this.rbAutomatic.UseVisualStyleBackColor = true;
@@ -197,9 +210,11 @@
             this.groupBox1.Controls.Add(this.rbThreads);
             this.groupBox1.Controls.Add(this.rbTaskCount);
             this.groupBox1.Controls.Add(this.btnChangeSorting);
-            this.groupBox1.Location = new System.Drawing.Point(701, 6);
+            this.groupBox1.Location = new System.Drawing.Point(1139, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 195);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(393, 312);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -207,18 +222,20 @@
             // 
             this.lblSorting.AutoSize = true;
             this.lblSorting.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblSorting.Location = new System.Drawing.Point(6, 23);
+            this.lblSorting.Location = new System.Drawing.Point(10, 37);
+            this.lblSorting.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSorting.Name = "lblSorting";
-            this.lblSorting.Size = new System.Drawing.Size(158, 25);
+            this.lblSorting.Size = new System.Drawing.Size(255, 40);
             this.lblSorting.TabIndex = 2;
             this.lblSorting.Text = "Sorting: ascending";
             // 
             // rbMemory
             // 
             this.rbMemory.AutoSize = true;
-            this.rbMemory.Location = new System.Drawing.Point(16, 111);
+            this.rbMemory.Location = new System.Drawing.Point(26, 178);
+            this.rbMemory.Margin = new System.Windows.Forms.Padding(5);
             this.rbMemory.Name = "rbMemory";
-            this.rbMemory.Size = new System.Drawing.Size(130, 24);
+            this.rbMemory.Size = new System.Drawing.Size(207, 36);
             this.rbMemory.TabIndex = 1;
             this.rbMemory.Text = "Memory Usage";
             this.rbMemory.UseVisualStyleBackColor = true;
@@ -226,9 +243,10 @@
             // rbThreads
             // 
             this.rbThreads.AutoSize = true;
-            this.rbThreads.Location = new System.Drawing.Point(16, 81);
+            this.rbThreads.Location = new System.Drawing.Point(26, 130);
+            this.rbThreads.Margin = new System.Windows.Forms.Padding(5);
             this.rbThreads.Name = "rbThreads";
-            this.rbThreads.Size = new System.Drawing.Size(82, 24);
+            this.rbThreads.Size = new System.Drawing.Size(129, 36);
             this.rbThreads.TabIndex = 3;
             this.rbThreads.Text = "Threads";
             this.rbThreads.UseVisualStyleBackColor = true;
@@ -237,9 +255,10 @@
             // 
             this.rbTaskCount.AutoSize = true;
             this.rbTaskCount.Checked = true;
-            this.rbTaskCount.Location = new System.Drawing.Point(16, 51);
+            this.rbTaskCount.Location = new System.Drawing.Point(26, 82);
+            this.rbTaskCount.Margin = new System.Windows.Forms.Padding(5);
             this.rbTaskCount.Name = "rbTaskCount";
-            this.rbTaskCount.Size = new System.Drawing.Size(100, 24);
+            this.rbTaskCount.Size = new System.Drawing.Size(161, 36);
             this.rbTaskCount.TabIndex = 4;
             this.rbTaskCount.TabStop = true;
             this.rbTaskCount.Text = "Task Count";
@@ -247,9 +266,10 @@
             // 
             // btnChangeSorting
             // 
-            this.btnChangeSorting.Location = new System.Drawing.Point(16, 141);
+            this.btnChangeSorting.Location = new System.Drawing.Point(26, 226);
+            this.btnChangeSorting.Margin = new System.Windows.Forms.Padding(5);
             this.btnChangeSorting.Name = "btnChangeSorting";
-            this.btnChangeSorting.Size = new System.Drawing.Size(130, 33);
+            this.btnChangeSorting.Size = new System.Drawing.Size(211, 53);
             this.btnChangeSorting.TabIndex = 5;
             this.btnChangeSorting.Text = "Up / Down";
             this.btnChangeSorting.UseVisualStyleBackColor = true;
@@ -257,64 +277,105 @@
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(717, 404);
+            this.btnDetails.Location = new System.Drawing.Point(1165, 646);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(5);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(130, 33);
+            this.btnDetails.Size = new System.Drawing.Size(211, 53);
             this.btnDetails.TabIndex = 0;
             this.btnDetails.Text = "Show details";
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.gauRAM);
             this.tabPage2.Controls.Add(this.pieChart);
             this.tabPage2.Controls.Add(this.gauCPU);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(8, 46);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(949, 443);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
+            this.tabPage2.Size = new System.Drawing.Size(1539, 708);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Memory Useage (Piechart)";
+            this.tabPage2.Text = "Memory Useage (Piechart), CPU/RAM utilization";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1184, 384);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 32);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "RAM";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1184, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 32);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "CPU";
             // 
             // gauRAM
             // 
-            this.gauRAM.Location = new System.Drawing.Point(701, 149);
-            this.gauRAM.Margin = new System.Windows.Forms.Padding(10);
+            this.gauRAM.Location = new System.Drawing.Point(1124, 384);
+            this.gauRAM.Margin = new System.Windows.Forms.Padding(16);
             this.gauRAM.Name = "gauRAM";
-            this.gauRAM.Size = new System.Drawing.Size(105, 123);
+            this.gauRAM.Size = new System.Drawing.Size(185, 197);
             this.gauRAM.TabIndex = 7;
             this.gauRAM.Text = "RAM - Usage";
             // 
             // pieChart
             // 
-            this.pieChart.Location = new System.Drawing.Point(5, 5);
-            this.pieChart.Margin = new System.Windows.Forms.Padding(2);
+            this.pieChart.Location = new System.Drawing.Point(8, 8);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(594, 432);
+            this.pieChart.Size = new System.Drawing.Size(965, 691);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "pieChart1";
             // 
             // gauCPU
             // 
-            this.gauCPU.Location = new System.Drawing.Point(692, 21);
+            this.gauCPU.Location = new System.Drawing.Point(1124, 127);
+            this.gauCPU.Margin = new System.Windows.Forms.Padding(5);
             this.gauCPU.Name = "gauCPU";
-            this.gauCPU.Size = new System.Drawing.Size(114, 115);
+            this.gauCPU.Size = new System.Drawing.Size(185, 184);
             this.gauCPU.TabIndex = 7;
             this.gauCPU.Text = "CPU - Usage";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.lncCpuHistory);
+            this.tabPage3.Location = new System.Drawing.Point(8, 46);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1539, 708);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "CPU useage history";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // refreshtimer
             // 
             this.refreshtimer.Interval = 2000;
             this.refreshtimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
             // 
+            // lncCpuHistory
+            // 
+            this.lncCpuHistory.Location = new System.Drawing.Point(3, 6);
+            this.lncCpuHistory.Name = "lncCpuHistory";
+            this.lncCpuHistory.Size = new System.Drawing.Size(1530, 696);
+            this.lncCpuHistory.TabIndex = 0;
+            this.lncCpuHistory.Text = "cartesianChart1";
+            // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 497);
+            this.ClientSize = new System.Drawing.Size(1651, 795);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.Load += new System.EventHandler(this.MainView_Load);
@@ -325,6 +386,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -357,5 +420,9 @@
         private Label label1;
         private RadioButton radioButton2;
         private GroupBox groupBox1;
+        private Label label3;
+        private Label label2;
+        private TabPage tabPage3;
+        private LiveCharts.WinForms.CartesianChart lncCpuHistory;
     }
 }

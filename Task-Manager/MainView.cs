@@ -228,11 +228,6 @@ namespace Task_Manager
 
         }
 
-        private void btnUpdate_Click_1(object sender, EventArgs e)
-        {
-            OnUpdateTasksRequested?.Invoke(this, e);
-        }
-
         private void MainView_Load(object sender, EventArgs e)
         {
             OnUpdateTasksRequested?.Invoke(this, e);
