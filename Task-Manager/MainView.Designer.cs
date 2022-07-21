@@ -364,6 +364,7 @@
             this.lncCpuHistory.Size = new System.Drawing.Size(1530, 696);
             this.lncCpuHistory.TabIndex = 0;
             this.lncCpuHistory.Text = "cartesianChart1";
+            this.lncCpuHistory.DisableAnimations = true;
             // 
             // refreshtimer
             // 

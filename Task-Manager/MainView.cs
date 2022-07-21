@@ -154,6 +154,8 @@ namespace Task_Manager
                     Values = new ChartValues<int>(cpuHistory),
                 }
             };
+
+            lncCpuHistory.Series = series;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
