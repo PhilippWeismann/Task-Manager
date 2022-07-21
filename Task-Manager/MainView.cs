@@ -65,16 +65,16 @@ namespace Task_Manager
             SeriesCollection series = new SeriesCollection();
             double memoryOfOther = 0;
 
-            SortByMemorySize smem = new SortByMemorySize();
+            SortByMemorySize smem = new SortByMemorySize();     //sort the processes by memory size, from largest to smallest
             processes.Sort(smem);
             processes.Reverse();
 
-            double memSizeOfFifthProcess = processes[5].MemoryUsageMB;
+            double memSizeOfFifthProcess = processes[5].MemoryUsageMB;  //get memory size from the 6th largest
 
             #region largest 5 Tasks
             foreach (var process in processes)   
             {
-                if (process.MemoryUsageMB > memSizeOfFifthProcess)
+                if (process.MemoryUsageMB > memSizeOfFifthProcess)  //if memory size is smaller than the 6th largest -> new PieSeries
                 {
 
                     PieSeries chart = new PieSeries
@@ -88,14 +88,14 @@ namespace Task_Manager
                     };
                     series.Add(chart);
                 }
-                else
+                else    //if not -> sum the memory useage
                 {
                     memoryOfOther += process.MemoryUsageMB;
                 }
             }
             #endregion
             #region sum of other tasks
-            PieSeries chartOfOther = new PieSeries
+            PieSeries chartOfOther = new PieSeries      //new PieSeries with all processes from the 6th largest
             {
                 Title = "other",
                 Values = new ChartValues<double> { memoryOfOther },
@@ -107,7 +107,7 @@ namespace Task_Manager
             series.Add(chartOfOther);
             #endregion
 
-            pieChart.Series = series;
+            pieChart.Series = series;   //show PieChart
         }
 
         public void UpdateListView(List<ProcessWithCount> processes)
@@ -116,16 +116,13 @@ namespace Task_Manager
 
             SortProcesses(processes);            
 
-            foreach (ProcessWithCount process in processes)
+            foreach (ProcessWithCount process in processes) //for every process in the list -> new ListViewItem = one line in the ListView
             {
                 ListViewItem item = new ListViewItem(InternalProcesses.ProcessWithCountToStringArrray(process));
                 item.Tag = process;
 
                 livTasks.Items.Add(item);
             }
-
-            int processcounter = processes.Count;
-            lblNumberOfProcesses.Text = "Number of Processes: " + processcounter.ToString();
         }
 
         public void UpdateLineChart(List<List<int>> chartlist, string[] labels)
@@ -133,7 +130,7 @@ namespace Task_Manager
             int counter = 0;
             SeriesCollection series = new SeriesCollection();
 
-            foreach (List<int> dataset in chartlist)
+            foreach (List<int> dataset in chartlist)    //for every dataset -> new LineSerie = Line in chart
             {
                 LineSeries line = new LineSeries();
                 line.Values = new ChartValues<int>(dataset);
@@ -142,29 +139,29 @@ namespace Task_Manager
                 counter++;
             }
                         
-            lncCpuRamHistory.Series = series;
+            lncCpuRamHistory.Series = series;   //show lines in one charts
         }
         #endregion
 
         #region private methods
-        private void MainView_Load(object sender, EventArgs e)
+        private void MainView_Load(object sender, EventArgs e)  //when the MainView starts 
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
         private void SortProcesses(List<ProcessWithCount> processes)
         {
-            if (rbTaskCount.Checked)
+            if (rbTaskCount.Checked)    //check the ctriertia for sorting
             {
                 SortByProcessCount scount = new SortByProcessCount();
                 processes.Sort(scount);
             }
-            else if (rbMemory.Checked)
+            else if (rbMemory.Checked)  //check the ctriertia for sorting
             {
                 SortByMemorySize smem = new SortByMemorySize();
                 processes.Sort(smem);
             }
-            else if (rbThreads.Checked)
+            else if (rbThreads.Checked) //check the ctriertia for sorting
             {
                 SortByThreads sthreads = new SortByThreads();
 
@@ -177,15 +174,15 @@ namespace Task_Manager
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)    //for manual uptdating
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        private void btnDetails_Click(object sender, EventArgs e)
+        private void btnDetails_Click(object sender, EventArgs e)   //to open the DetailView
         {
             var selected = livTasks.SelectedItems;
-            if (selected.Count == 1)
+            if (selected.Count == 1)    //open only if only one Item in the Listview is selected
             {
                 var item = selected[0];
                 ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
@@ -215,14 +212,14 @@ namespace Task_Manager
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        private void refreshtimer_Tick(object sender, EventArgs e)
+        private void refreshtimer_Tick(object sender, EventArgs e)  //if the refresher fires an event, fire OnUpdateTaskRe...
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl.SelectedIndex == 0)
+            if (tabControl.SelectedIndex == 0)  //if user is in the first tab and in automatic mode -> start refresher
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
                 if (rbAutomatic.Checked)
@@ -230,12 +227,12 @@ namespace Task_Manager
                     refreshTasksTimer.Start();
                 }
             }
-            if (tabControl.SelectedIndex == 1)
+            if (tabControl.SelectedIndex == 1)  //if user is in the second tab (PieChhart) -> stop refresher and update tasks ones
             {
                 OnUpdateTasksRequested?.Invoke(this, e);
                 refreshTasksTimer.Stop();
             }
-            else if (tabControl.SelectedIndex == 2)
+            else if (tabControl.SelectedIndex == 2) //if user is in the third tab (lineChart) -> fire OnUpdateCpuRamRe.. 
             {
                 OnUpdateCpuRamRequested?.Invoke(this, e);
             }
@@ -266,17 +263,17 @@ namespace Task_Manager
             OnUpdateCpuRamRequested?.Invoke(this, e);
         }
 
-        private void rbTaskCount_Click(object sender, EventArgs e)
+        private void rbTaskCount_Click(object sender, EventArgs e)  //for sorting
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        private void rbThreads_Click(object sender, EventArgs e)
+        private void rbThreads_Click(object sender, EventArgs e)    //for sorting
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
 
-        private void rbMemory_Click(object sender, EventArgs e)
+        private void rbMemory_Click(object sender, EventArgs e)     //for sorting
         {
             OnUpdateTasksRequested?.Invoke(this, e);
         }
