@@ -53,7 +53,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lncCpuHistory = new LiveCharts.WinForms.CartesianChart();
+            this.lncCpuRamHistory = new LiveCharts.WinForms.CartesianChart();
             this.refreshTasksTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshCpuRamTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
@@ -86,7 +86,7 @@
             // 
             // cMemory
             // 
-            this.cMemory.Text = "Memory Useage";
+            this.cMemory.Text = "Memory Useage [MB]";
             this.cMemory.Width = 200;
             // 
             // cPriority
@@ -283,13 +283,13 @@
             this.pieChart.Location = new System.Drawing.Point(5, 5);
             this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(594, 432);
+            this.pieChart.Size = new System.Drawing.Size(939, 432);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "pieChart1";
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.lncCpuHistory);
+            this.tabPage3.Controls.Add(this.lncCpuRamHistory);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
@@ -299,14 +299,14 @@
             this.tabPage3.Text = "CPU useage history";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // lncCpuHistory
+            // lncCpuRamHistory
             // 
-            this.lncCpuHistory.Location = new System.Drawing.Point(2, 4);
-            this.lncCpuHistory.Margin = new System.Windows.Forms.Padding(2);
-            this.lncCpuHistory.Name = "lncCpuHistory";
-            this.lncCpuHistory.Size = new System.Drawing.Size(943, 435);
-            this.lncCpuHistory.TabIndex = 0;
-            this.lncCpuHistory.Text = "cartesianChart1";
+            this.lncCpuRamHistory.Location = new System.Drawing.Point(2, 4);
+            this.lncCpuRamHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.lncCpuRamHistory.Name = "lncCpuRamHistory";
+            this.lncCpuRamHistory.Size = new System.Drawing.Size(943, 435);
+            this.lncCpuRamHistory.TabIndex = 0;
+            this.lncCpuRamHistory.Text = "cartesianChart1";
             // 
             // refreshTasksTimer
             // 
@@ -367,7 +367,7 @@
         private RadioButton rbManual;
         private GroupBox groupBox1;
         private TabPage tabPage3;
-        private LiveCharts.WinForms.CartesianChart lncCpuHistory;
+        private LiveCharts.WinForms.CartesianChart lncCpuRamHistory;
         private System.Windows.Forms.Timer refreshCpuRamTimer;
     }
 }

@@ -32,18 +32,21 @@ namespace Task_Manager
 
             btnUpdate.Visible = true;
 
-            lncCpuHistory.DisableAnimations=true;
-            lncCpuHistory.AxisY.Clear();
-            lncCpuHistory.AxisY.Add(
+            lncCpuRamHistory.DisableAnimations=true;
+            lncCpuRamHistory.AxisY.Clear();
+            lncCpuRamHistory.AxisY.Add(
             new Axis
             {
                 MinValue = 0,
                 MaxValue = 100
             }) ;
 
-            lncCpuHistory.LegendLocation = LegendLocation.Right;
-            lncCpuHistory.DefaultLegend.Visibility = Visibility.Visible;
-            
+            lncCpuRamHistory.LegendLocation = LegendLocation.Right;
+            lncCpuRamHistory.DefaultLegend.Visibility = Visibility.Visible;
+
+            pieChart.LegendLocation = LegendLocation.Right;
+            pieChart.DefaultLegend.Visibility = Visibility.Visible;
+
         }   
 
 
@@ -57,13 +60,13 @@ namespace Task_Manager
         public void UpdatePiechart(List<ProcessWithCount> processes)
         {
             SeriesCollection series = new SeriesCollection();
-            long memoryOfOther = 0;
+            double memoryOfOther = 0;
 
             SortByMemorySize smem = new SortByMemorySize();
             processes.Sort(smem);
             processes.Reverse();
 
-            long memSizeOfFifthProcess = processes[5].MemoryUseage;
+            double memSizeOfFifthProcess = processes[5].MemoryUseage;
 
             //List
 
@@ -74,8 +77,8 @@ namespace Task_Manager
 
                     PieSeries chart = new PieSeries
                     {
-                        Title = process.Process.ProcessName,
-                        Values = new ChartValues<long> { process.MemoryUseage },
+                        Title = process.Process.ProcessName + " (" + process.MemoryUseage + " MB)",
+                        Values = new ChartValues<double> { process.MemoryUseage },
                         PushOut = 10,
                         DataLabels = true,
                         LabelPosition = PieLabelPosition.InsideSlice,
@@ -92,7 +95,7 @@ namespace Task_Manager
             PieSeries chartOfOther = new PieSeries
             {
                 Title = "other",
-                Values = new ChartValues<long> { memoryOfOther },
+                Values = new ChartValues<double> { memoryOfOther },
                 PushOut = 10,
                 DataLabels = true,
                 LabelPosition = PieLabelPosition.InsideSlice,
@@ -166,7 +169,7 @@ namespace Task_Manager
             }
 
             
-            lncCpuHistory.Series = series;
+            lncCpuRamHistory.Series = series;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {

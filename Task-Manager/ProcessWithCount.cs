@@ -32,10 +32,16 @@ namespace Task_Manager
 
     public class ProcessWithCount
     {
+        double _memoryUsage;
+
         private List<Process> allProcesses = new List<Process>();
         public Process Process { get; set; }
         public int Count { get { return allProcesses.Count; } }
-        public long MemoryUseage{ get; set; }
+        public double MemoryUseage
+        {
+            get { return Math.Round(_memoryUsage,3); }
+            set { _memoryUsage = value; }
+        }
         public string MemoryUseageOfAll { get; set; }
         public string IdOfAll { get; set; }
         public int ThreadsOfAll { get; set; }
@@ -44,8 +50,10 @@ namespace Task_Manager
         {
             allProcesses.Add(p);
             Process = p;
-            MemoryUseage = p.PagedMemorySize64;
-            MemoryUseageOfAll = p.PagedMemorySize64.ToString();
+
+            double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
+            MemoryUseage = memoryUseageMB;
+            MemoryUseageOfAll = memoryUseageMB.ToString();
             IdOfAll = p.Id.ToString();
             ThreadsOfAll = p.Threads.Count;
         }
@@ -53,10 +61,30 @@ namespace Task_Manager
         public void AddProcess(Process p)
         {
             allProcesses.Add(p);
-            MemoryUseage += p.PagedMemorySize64;
-            MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
+            double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
+            MemoryUseage += memoryUseageMB;
+            MemoryUseageOfAll += ", " + memoryUseageMB.ToString();
             IdOfAll += ", " + p.Id.ToString();
             ThreadsOfAll += p.Threads.Count;
-        }        
+        }
+
+        //public ProcessWithCount(Process p)
+        //{
+        //    allProcesses.Add(p);
+        //    Process = p;
+        //    MemoryUseage = p.PagedMemorySize64;
+        //    MemoryUseageOfAll = p.PagedMemorySize64.ToString();
+        //    IdOfAll = p.Id.ToString();
+        //    ThreadsOfAll = p.Threads.Count;
+        //}
+
+        //public void AddProcess(Process p)
+        //{
+        //    allProcesses.Add(p);
+        //    MemoryUseage += p.PagedMemorySize64;
+        //    MemoryUseageOfAll += ", " + p.PagedMemorySize64.ToString();
+        //    IdOfAll += ", " + p.Id.ToString();
+        //    ThreadsOfAll += p.Threads.Count;
+        //}
     }
 }
