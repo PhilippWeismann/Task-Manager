@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task_Manager
 {
+    #region classes to compare
     public class SortByMemorySize : IComparer<ProcessWithCount>
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
@@ -30,6 +31,7 @@ namespace Task_Manager
             return x.ThreadsOfAll.CompareTo(y.ThreadsOfAll);
         }
     }
+    #endregion
 
     public class ProcessWithCount
     {

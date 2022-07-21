@@ -1,5 +1,12 @@
 namespace Task_Manager
 {
+    /// Projektbeschreibung:
+    /// Ablussprojekt PRO2UE: Task-Manager
+    /// Studenten: NITSCHE Simon - S2110438010
+    ///            WEISMANN Philipp - S2110438015
+    /// LVA-Leiter: Dipl.- Ing. Ralph Slabihoud
+    /// Abgabetermin: 31.07.2022
+
     internal static class Program
     {
         /// <summary>

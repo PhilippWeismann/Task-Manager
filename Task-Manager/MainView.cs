@@ -108,7 +108,7 @@ namespace Task_Manager
             #endregion
 
             pieChart.Series = series;
-        }     
+        }
 
         public void UpdateListView(List<ProcessWithCount> processes)
         {
