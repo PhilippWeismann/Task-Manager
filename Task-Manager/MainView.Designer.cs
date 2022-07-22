@@ -72,7 +72,7 @@
             this.cPriority,
             this.cThreads});
             this.livTasks.Location = new System.Drawing.Point(4, 6);
-            this.livTasks.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.livTasks.Margin = new System.Windows.Forms.Padding(1);
             this.livTasks.MultiSelect = false;
             this.livTasks.Name = "livTasks";
             this.livTasks.Size = new System.Drawing.Size(680, 433);
@@ -83,12 +83,12 @@
             // cTaskName
             // 
             this.cTaskName.Text = "Task Name";
-            this.cTaskName.Width = 500;
+            this.cTaskName.Width = 275;
             // 
             // cMemory
             // 
             this.cMemory.Text = "Memory Useage [MB]";
-            this.cMemory.Width = 250;
+            this.cMemory.Width = 180;
             // 
             // cPriority
             // 
@@ -100,7 +100,7 @@
             // 
             this.cThreads.Text = "Threads";
             this.cThreads.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.cThreads.Width = 120;
+            this.cThreads.Width = 100;
             // 
             // lblNumberOfProcesses
             // 
@@ -130,9 +130,9 @@
             this.tabPage1.Controls.Add(this.livTasks);
             this.tabPage1.Controls.Add(this.btnDetails);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(949, 443);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "List of Tasks";
@@ -274,7 +274,7 @@
             this.tabPage2.Controls.Add(this.pieChart);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(949, 443);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Memory Useage ";
@@ -283,7 +283,7 @@
             // pieChart
             // 
             this.pieChart.Location = new System.Drawing.Point(5, 5);
-            this.pieChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
             this.pieChart.Size = new System.Drawing.Size(939, 432);
             this.pieChart.TabIndex = 0;
@@ -294,9 +294,9 @@
             this.tabPage3.Controls.Add(this.lblInfo);
             this.tabPage3.Controls.Add(this.lncCpuRamHistory);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(949, 443);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CPU / RAM useage history";
@@ -314,7 +314,7 @@
             // lncCpuRamHistory
             // 
             this.lncCpuRamHistory.Location = new System.Drawing.Point(2, 44);
-            this.lncCpuRamHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lncCpuRamHistory.Margin = new System.Windows.Forms.Padding(2);
             this.lncCpuRamHistory.Name = "lncCpuRamHistory";
             this.lncCpuRamHistory.Size = new System.Drawing.Size(943, 395);
             this.lncCpuRamHistory.TabIndex = 0;
@@ -336,7 +336,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 497);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MainView";
             this.Text = "Task Viewer | © Nitsche - Weismann";
             this.Load += new System.EventHandler(this.MainView_Load);

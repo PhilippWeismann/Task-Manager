@@ -235,7 +235,6 @@ namespace Task_Manager
             }
             else if (tabControl.SelectedIndex == 2) //if user is in the third tab (lineChart) -> fire OnUpdateCpuRamRe.. 
             {
-                UpdateCpuRamRequested?.Invoke(this, e);
                 refreshTasksTimer.Stop();
             }
         }

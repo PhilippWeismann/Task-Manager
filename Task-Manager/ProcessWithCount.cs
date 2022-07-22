@@ -68,8 +68,8 @@ namespace Task_Manager
             _allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
             MemoryUsageMB += memoryUseageMB;
-            MemoryUseageOfAllMB += " ; " + Math.Round(memoryUseageMB, 2).ToString();
-            IdOfAll += "; " + p.Id.ToString();
+            MemoryUseageOfAllMB += " / " + Math.Round(memoryUseageMB, 2).ToString();
+            IdOfAll += " / " + p.Id.ToString();
             ThreadsOfAll += p.Threads.Count;
         }
     }
