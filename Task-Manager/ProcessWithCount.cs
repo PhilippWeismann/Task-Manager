@@ -43,7 +43,7 @@ namespace Task_Manager
         public int Count { get { return _allProcesses.Count; } }
         public double MemoryUsageMB
         {
-            get { return Math.Round(_memoryUsage,3); }
+            get { return Math.Round(_memoryUsage,2); }
             set { _memoryUsage = value; }
         }
         public string MemoryUseageOfAllMB { get; set; }
@@ -58,7 +58,7 @@ namespace Task_Manager
 
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
             MemoryUsageMB = memoryUseageMB;
-            MemoryUseageOfAllMB = memoryUseageMB.ToString();
+            MemoryUseageOfAllMB = Math.Round(memoryUseageMB, 2).ToString();
             IdOfAll = p.Id.ToString();
             ThreadsOfAll = p.Threads.Count;
         }
@@ -68,7 +68,7 @@ namespace Task_Manager
             _allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;
             MemoryUsageMB += memoryUseageMB;
-            MemoryUseageOfAllMB += "; " + memoryUseageMB.ToString();
+            MemoryUseageOfAllMB += " ; " + Math.Round(memoryUseageMB, 2).ToString();
             IdOfAll += "; " + p.Id.ToString();
             ThreadsOfAll += p.Threads.Count;
         }

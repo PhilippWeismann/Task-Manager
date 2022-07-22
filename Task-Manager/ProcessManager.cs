@@ -24,9 +24,10 @@ namespace Task_Manager
             _cpuHistory = new List<int>();
             _ramHistory = new List<int>();
 
-            _mainView.OnUpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
-            _mainView.OnUpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
-            _mainView.OnShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
+            _mainView.UpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
+            _mainView.UpdatePieChartRequested+= new EventHandler(OnUpdatePieChartRequested);
+            _mainView.UpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
+            _mainView.ShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
 
         #region without Count //didn't use because we need the count the same Tasks
@@ -48,9 +49,13 @@ namespace Task_Manager
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
             _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
-
-            _mainView.UpdatePiechart(_updatedProcesses);    //update piechart with the current processes
             _mainView.UpdateListView(_updatedProcesses);    //update Listview with the current processes
+        }
+
+        private void OnUpdatePieChartRequested(object sender, EventArgs e)
+        {
+            _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
+            _mainView.UpdatePiechart(_updatedProcesses);    //update piechart with the current processes
         }
         #endregion
 

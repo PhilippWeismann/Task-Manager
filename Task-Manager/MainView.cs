@@ -14,9 +14,10 @@ namespace Task_Manager
 {
     public partial class MainView : Form
     {
-        public event EventHandler OnUpdateTasksRequested;
-        public event EventHandler OnUpdateCpuRamRequested;
-        public event EventHandler<ProcessWithCount> OnShowDetail;
+        public event EventHandler UpdateTasksRequested;
+        public event EventHandler UpdatePieChartRequested;
+        public event EventHandler UpdateCpuRamRequested;
+        public event EventHandler<ProcessWithCount> ShowDetail;
 
         int reversecount = 0;
         bool reverse = false;
@@ -26,7 +27,7 @@ namespace Task_Manager
             InitializeComponent();
             refreshCpuRamTimer.Start();
 
-            OnUpdateTasksRequested?.Invoke(this, new EventArgs());
+            UpdateTasksRequested?.Invoke(this, new EventArgs());
 
             btnUpdate.Visible = true;
 
@@ -146,7 +147,7 @@ namespace Task_Manager
         #region private methods
         private void MainView_Load(object sender, EventArgs e)  //when the MainView starts 
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void SortProcesses(List<ProcessWithCount> processes)
@@ -176,7 +177,7 @@ namespace Task_Manager
 
         private void btnUpdate_Click(object sender, EventArgs e)    //for manual uptdating
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void btnDetails_Click(object sender, EventArgs e)   //to open the DetailView
@@ -186,7 +187,7 @@ namespace Task_Manager
             {
                 var item = selected[0];
                 ProcessWithCount selectedProcess = (ProcessWithCount)item.Tag;
-                OnShowDetail?.Invoke(this, selectedProcess);
+                ShowDetail?.Invoke(this, selectedProcess);
             }
             else if (selected.Count == 0)
             {
@@ -209,19 +210,19 @@ namespace Task_Manager
                 reversecount=0;
             }
 
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void refreshtimer_Tick(object sender, EventArgs e)  //if the refresher fires an event, fire OnUpdateTaskRe...
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl.SelectedIndex == 0)  //if user is in the first tab and in automatic mode -> start refresher
             {
-                OnUpdateTasksRequested?.Invoke(this, e);
+                UpdateTasksRequested?.Invoke(this, e);
                 if (rbAutomatic.Checked)
                 {
                     refreshTasksTimer.Start();
@@ -229,12 +230,13 @@ namespace Task_Manager
             }
             if (tabControl.SelectedIndex == 1)  //if user is in the second tab (PieChhart) -> stop refresher and update tasks ones
             {
-                OnUpdateTasksRequested?.Invoke(this, e);
+                UpdatePieChartRequested?.Invoke(this, e);
                 refreshTasksTimer.Stop();
             }
             else if (tabControl.SelectedIndex == 2) //if user is in the third tab (lineChart) -> fire OnUpdateCpuRamRe.. 
             {
-                OnUpdateCpuRamRequested?.Invoke(this, e);
+                UpdateCpuRamRequested?.Invoke(this, e);
+                refreshTasksTimer.Stop();
             }
         }
 
@@ -245,7 +247,7 @@ namespace Task_Manager
             if (rbAutomatic.Checked)
             {
                 btnUpdate.Visible = false;
-                OnUpdateTasksRequested?.Invoke(this, e);
+                UpdateTasksRequested?.Invoke(this, e);
                 refreshTasksTimer.Start();
                 lblUpdateMode.Text = "Update-Mode: automatic";
             }
@@ -260,22 +262,22 @@ namespace Task_Manager
 
         private void refreshCpuRamTimer_Tick(object sender, EventArgs e)
         {
-            OnUpdateCpuRamRequested?.Invoke(this, e);
+            UpdateCpuRamRequested?.Invoke(this, e);
         }
 
         private void rbTaskCount_Click(object sender, EventArgs e)  //for sorting
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void rbThreads_Click(object sender, EventArgs e)    //for sorting
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
 
         private void rbMemory_Click(object sender, EventArgs e)     //for sorting
         {
-            OnUpdateTasksRequested?.Invoke(this, e);
+            UpdateTasksRequested?.Invoke(this, e);
         }
         #endregion
     }
