@@ -50,6 +50,10 @@
             this.btnChangeSorting = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblSize = new System.Windows.Forms.Label();
+            this.lblmax = new System.Windows.Forms.Label();
+            this.lblmin = new System.Windows.Forms.Label();
+            this.tbSlices = new System.Windows.Forms.TrackBar();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblInfo = new System.Windows.Forms.Label();
@@ -61,6 +65,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSlices)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -271,6 +276,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblSize);
+            this.tabPage2.Controls.Add(this.lblmax);
+            this.tabPage2.Controls.Add(this.lblmin);
+            this.tabPage2.Controls.Add(this.tbSlices);
             this.tabPage2.Controls.Add(this.pieChart);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
@@ -280,12 +289,51 @@
             this.tabPage2.Text = "Memory Useage ";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblSize
+            // 
+            this.lblSize.AutoSize = true;
+            this.lblSize.Location = new System.Drawing.Point(478, 381);
+            this.lblSize.Name = "lblSize";
+            this.lblSize.Size = new System.Drawing.Size(180, 20);
+            this.lblSize.TabIndex = 4;
+            this.lblSize.Text = "Number of showed Slices:";
+            // 
+            // lblmax
+            // 
+            this.lblmax.AutoSize = true;
+            this.lblmax.Location = new System.Drawing.Point(895, 417);
+            this.lblmax.Name = "lblmax";
+            this.lblmax.Size = new System.Drawing.Size(25, 20);
+            this.lblmax.TabIndex = 3;
+            this.lblmax.Text = "13";
+            // 
+            // lblmin
+            // 
+            this.lblmin.AutoSize = true;
+            this.lblmin.Location = new System.Drawing.Point(664, 417);
+            this.lblmin.Name = "lblmin";
+            this.lblmin.Size = new System.Drawing.Size(17, 20);
+            this.lblmin.TabIndex = 2;
+            this.lblmin.Text = "1";
+            // 
+            // tbSlices
+            // 
+            this.tbSlices.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbSlices.Location = new System.Drawing.Point(664, 381);
+            this.tbSlices.Maximum = 13;
+            this.tbSlices.Minimum = 1;
+            this.tbSlices.Name = "tbSlices";
+            this.tbSlices.Size = new System.Drawing.Size(256, 56);
+            this.tbSlices.TabIndex = 1;
+            this.tbSlices.Value = 5;
+            this.tbSlices.Scroll += new System.EventHandler(this.tbSlices_Scroll);
+            // 
             // pieChart
             // 
             this.pieChart.Location = new System.Drawing.Point(5, 5);
             this.pieChart.Margin = new System.Windows.Forms.Padding(2);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(939, 432);
+            this.pieChart.Size = new System.Drawing.Size(925, 361);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "pieChart1";
             // 
@@ -347,6 +395,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSlices)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -382,5 +432,9 @@
         private LiveCharts.WinForms.CartesianChart lncCpuRamHistory;
         private System.Windows.Forms.Timer refreshCpuRamTimer;
         private Label lblInfo;
+        private Label lblmin;
+        private TrackBar tbSlices;
+        private Label lblSize;
+        private Label lblmax;
     }
 }

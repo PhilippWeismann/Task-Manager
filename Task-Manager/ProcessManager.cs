@@ -25,7 +25,7 @@ namespace Task_Manager
             _ramHistory = new List<int>();
 
             _mainView.UpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
-            _mainView.UpdatePieChartRequested+= new EventHandler(OnUpdatePieChartRequested);
+            _mainView.UpdatePieChartRequested+= new EventHandler<int>(OnUpdatePieChartRequested);
             _mainView.UpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
             _mainView.ShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
@@ -52,10 +52,10 @@ namespace Task_Manager
             _mainView.UpdateListView(_updatedProcesses);    //update Listview with the current processes
         }
 
-        private void OnUpdatePieChartRequested(object sender, EventArgs e)
+        private void OnUpdatePieChartRequested(object sender, int numberOfSlices)
         {
             _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
-            _mainView.UpdatePiechart(_updatedProcesses);    //update piechart with the current processes
+            _mainView.UpdatePiechart(_updatedProcesses,numberOfSlices);    //update piechart with the current processes
         }
         #endregion
 
