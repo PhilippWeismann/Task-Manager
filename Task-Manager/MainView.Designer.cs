@@ -267,9 +267,9 @@
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(782, 407);
+            this.btnDetails.Location = new System.Drawing.Point(701, 395);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(161, 33);
+            this.btnDetails.Size = new System.Drawing.Size(236, 33);
             this.btnDetails.TabIndex = 0;
             this.btnDetails.Text = "Show details of Process";
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
