@@ -121,7 +121,7 @@ namespace Task_Manager
 
             foreach (ProcessWithCount process in processes) //for every process in the list -> new ListViewItem = one line in the ListView
             {
-                ListViewItem item = new ListViewItem(InternalProcesses.ProcessWithCountToStringArrray(process)); //new ListViewItem for each process
+                ListViewItem item = new ListViewItem(ProcessWithCount.ProcessWithCountToStringArrray(process)); //new ListViewItem for each process
                 item.Tag = process; //tag is used for Detail-View
 
                 livProcesses.Items.Add(item); //item is added to the ListView

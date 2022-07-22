@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Task_Manager
 {
-    internal class InternalProcesses
+    public class InternalProcesses
     {
         #region Members
         List<Process> _processes;

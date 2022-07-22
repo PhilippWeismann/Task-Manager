@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Task_Manager
 {
     #region classes to compare
-    public class SortByMemorySize : IComparer<ProcessWithCount>
+    public class SortByMemorySize : IComparer<ProcessWithCount> //to compare the MemoryUsage of two processes
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
         {
@@ -16,7 +16,7 @@ namespace Task_Manager
         }
     }
 
-    public class SortByProcessCount : IComparer<ProcessWithCount>
+    public class SortByProcessCount : IComparer<ProcessWithCount> //to compare the Process-Count of two processes
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
         {
@@ -24,7 +24,7 @@ namespace Task_Manager
         }
     }
 
-    public class SortByThreads : IComparer<ProcessWithCount>
+    public class SortByThreads : IComparer<ProcessWithCount> //to compare the number of threads of two processes
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)
         {
@@ -33,10 +33,13 @@ namespace Task_Manager
     }
     #endregion
 
-    public class ProcessWithCount
+    public class ProcessWithCount : InternalProcesses
     {
-        double _memoryUsage;
+        #region Members
+        double _memoryUsage; // necsessary for individual getter at property
         private List<Process> _allProcesses = new List<Process>();
+        #endregion
+
 
         #region properties
         public Process Process { get; set; }
@@ -63,7 +66,7 @@ namespace Task_Manager
             ThreadsOfAll = p.Threads.Count;
         }
 
-        public void AddProcess(Process p) //if a processname is twice use this method to increase the counter and sum the data
+        public void AddProcess(Process p) //if a processname is twice -> this method is used to increase the counter and sum the data
         {
             _allProcesses.Add(p);
             double memoryUseageMB = p.PagedMemorySize64 / 1000000.0;

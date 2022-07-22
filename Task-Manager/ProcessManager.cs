@@ -17,35 +17,24 @@ namespace Task_Manager
 
         MainView _mainView; //View
 
-        public ProcessManager(MainView mainView, InternalProcesses processes)   //Presenter
+        public ProcessManager(MainView mainView, InternalProcesses processes)   //Konstructor
         {
-            _processes = processes;
-            _mainView = mainView;
+            _processes = processes; //member _processes gets the value of parameter processes
+            _mainView = mainView; //member _mainView gets the value of parameter mainView
+
+            //initialisation of CPU-history and RAM-history List
             _cpuHistory = new List<int>();
             _ramHistory = new List<int>();
 
+
+            //event connections
             _mainView.UpdateProcessesRequested += new EventHandler(OnUpdateTasksRequested);
             _mainView.UpdatePieChartRequested+= new EventHandler<int>(OnUpdatePieChartRequested);
             _mainView.UpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
             _mainView.ShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);
         }
 
-        #region without Count //didn't use because we need the count the same Tasks
-        //private void OnUpdateTasksRequested(object sender, EventArgs e)
-        //{
-        //    List<Process> updatedProcesses = _processes.GetCurrentProcesses();
-        //    List<string[]> updatedProcessStings = new List<string[]>();
-
-        //    foreach (Process p in updatedProcesses)
-        //    {
-        //        updatedProcessStings.Add(InternalProcesses.ProcessToStringArrray(p));
-        //    }
-
-        //    OnShowProcessesRequested?.Invoke(this, updatedProcessStings);
-        //}
-        #endregion
-
-        #region with Count
+        #region Event-Methods
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
             _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
@@ -55,9 +44,8 @@ namespace Task_Manager
         private void OnUpdatePieChartRequested(object sender, int numberOfSlices)
         {
             _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
-            _mainView.UpdatePiechart(_updatedProcesses,numberOfSlices);    //update piechart with the current processes
+            _mainView.UpdatePiechart(_updatedProcesses, numberOfSlices);    //update piechart with the current processes
         }
-        #endregion
 
         private void OnUpdateCpuRamRequested(object sender, EventArgs e)
         {
@@ -74,15 +62,17 @@ namespace Task_Manager
             chartlist.Add(_cpuHistory);
             chartlist.Add(_ramHistory);
 
-            string[] labels = new string[] { "CPU usage [%]", "RAM usage [%]" };    
+            string[] labels = new string[] { "CPU usage [%]", "RAM usage [%]" }; //create an array with the labels
 
-            _mainView.UpdateLineChart(chartlist, labels); //update the linechart with the two lists and the label
+            _mainView.UpdateLineChart(chartlist, labels); //update the linechart with the two charts (CPU-history and RAM-History) and the labels
         }
 
-        private void OnShowDetailRequested(object sender, ProcessWithCount itemToShow)
+        private void OnShowDetailRequested(object sender, ProcessWithCount itemToShow) //Initializes a new DetailView-Object with the chosen Process in the ListView
         {
             var detailView = new DetailView(itemToShow);    //View
-            detailView.Show();
+            detailView.Show(); //Shows the Detail-View
         }
+        #endregion
+
     }
 }
