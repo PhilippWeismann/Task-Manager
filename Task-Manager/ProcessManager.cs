@@ -24,7 +24,7 @@ namespace Task_Manager
             _cpuHistory = new List<int>();
             _ramHistory = new List<int>();
 
-            _mainView.UpdateTasksRequested += new EventHandler(OnUpdateTasksRequested);
+            _mainView.UpdateProcessesRequested += new EventHandler(OnUpdateTasksRequested);
             _mainView.UpdatePieChartRequested+= new EventHandler<int>(OnUpdatePieChartRequested);
             _mainView.UpdateCpuRamRequested += new EventHandler(OnUpdateCpuRamRequested);
             _mainView.ShowDetail += new EventHandler<ProcessWithCount>(OnShowDetailRequested);

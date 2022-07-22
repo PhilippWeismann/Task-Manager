@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.livTasks = new System.Windows.Forms.ListView();
-            this.cTaskName = new System.Windows.Forms.ColumnHeader();
+            this.livProcesses = new System.Windows.Forms.ListView();
+            this.cProcessName = new System.Windows.Forms.ColumnHeader();
             this.cMemory = new System.Windows.Forms.ColumnHeader();
             this.cPriority = new System.Windows.Forms.ColumnHeader();
             this.cThreads = new System.Windows.Forms.ColumnHeader();
@@ -46,7 +46,7 @@
             this.lblSorting = new System.Windows.Forms.Label();
             this.rbMemory = new System.Windows.Forms.RadioButton();
             this.rbThreads = new System.Windows.Forms.RadioButton();
-            this.rbTaskCount = new System.Windows.Forms.RadioButton();
+            this.rbProcessCount = new System.Windows.Forms.RadioButton();
             this.btnChangeSorting = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -58,7 +58,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lncCpuRamHistory = new LiveCharts.WinForms.CartesianChart();
-            this.refreshTasksTimer = new System.Windows.Forms.Timer(this.components);
+            this.refreshProcessTimer = new System.Windows.Forms.Timer(this.components);
             this.refreshCpuRamTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -69,26 +69,26 @@
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // livTasks
+            // livProcesses
             // 
-            this.livTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cTaskName,
+            this.livProcesses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cProcessName,
             this.cMemory,
             this.cPriority,
             this.cThreads});
-            this.livTasks.Location = new System.Drawing.Point(4, 6);
-            this.livTasks.Margin = new System.Windows.Forms.Padding(1);
-            this.livTasks.MultiSelect = false;
-            this.livTasks.Name = "livTasks";
-            this.livTasks.Size = new System.Drawing.Size(680, 433);
-            this.livTasks.TabIndex = 0;
-            this.livTasks.UseCompatibleStateImageBehavior = false;
-            this.livTasks.View = System.Windows.Forms.View.Details;
+            this.livProcesses.Location = new System.Drawing.Point(4, 6);
+            this.livProcesses.Margin = new System.Windows.Forms.Padding(1);
+            this.livProcesses.MultiSelect = false;
+            this.livProcesses.Name = "livProcesses";
+            this.livProcesses.Size = new System.Drawing.Size(680, 433);
+            this.livProcesses.TabIndex = 0;
+            this.livProcesses.UseCompatibleStateImageBehavior = false;
+            this.livProcesses.View = System.Windows.Forms.View.Details;
             // 
-            // cTaskName
+            // cProcessName
             // 
-            this.cTaskName.Text = "Task Name";
-            this.cTaskName.Width = 275;
+            this.cProcessName.Text = "Process Name";
+            this.cProcessName.Width = 275;
             // 
             // cMemory
             // 
@@ -132,7 +132,7 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.livTasks);
+            this.tabPage1.Controls.Add(this.livProcesses);
             this.tabPage1.Controls.Add(this.btnDetails);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
@@ -140,7 +140,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(949, 443);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "List of Tasks";
+            this.tabPage1.Text = "List of Processes";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -202,7 +202,7 @@
             this.groupBox1.Controls.Add(this.lblSorting);
             this.groupBox1.Controls.Add(this.rbMemory);
             this.groupBox1.Controls.Add(this.rbThreads);
-            this.groupBox1.Controls.Add(this.rbTaskCount);
+            this.groupBox1.Controls.Add(this.rbProcessCount);
             this.groupBox1.Controls.Add(this.btnChangeSorting);
             this.groupBox1.Location = new System.Drawing.Point(701, 6);
             this.groupBox1.Name = "groupBox1";
@@ -242,18 +242,18 @@
             this.rbThreads.UseVisualStyleBackColor = true;
             this.rbThreads.Click += new System.EventHandler(this.rbThreads_Click);
             // 
-            // rbTaskCount
+            // rbProcessCount
             // 
-            this.rbTaskCount.AutoSize = true;
-            this.rbTaskCount.Checked = true;
-            this.rbTaskCount.Location = new System.Drawing.Point(16, 51);
-            this.rbTaskCount.Name = "rbTaskCount";
-            this.rbTaskCount.Size = new System.Drawing.Size(100, 24);
-            this.rbTaskCount.TabIndex = 4;
-            this.rbTaskCount.TabStop = true;
-            this.rbTaskCount.Text = "Task Count";
-            this.rbTaskCount.UseVisualStyleBackColor = true;
-            this.rbTaskCount.Click += new System.EventHandler(this.rbTaskCount_Click);
+            this.rbProcessCount.AutoSize = true;
+            this.rbProcessCount.Checked = true;
+            this.rbProcessCount.Location = new System.Drawing.Point(16, 51);
+            this.rbProcessCount.Name = "rbProcessCount";
+            this.rbProcessCount.Size = new System.Drawing.Size(122, 24);
+            this.rbProcessCount.TabIndex = 4;
+            this.rbProcessCount.TabStop = true;
+            this.rbProcessCount.Text = "Process Count";
+            this.rbProcessCount.UseVisualStyleBackColor = true;
+            this.rbProcessCount.Click += new System.EventHandler(this.rbProcessCount_Click);
             // 
             // btnChangeSorting
             // 
@@ -271,7 +271,7 @@
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(161, 33);
             this.btnDetails.TabIndex = 0;
-            this.btnDetails.Text = "Show details of Task";
+            this.btnDetails.Text = "Show details of Process";
             this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // tabPage2
@@ -368,10 +368,10 @@
             this.lncCpuRamHistory.TabIndex = 0;
             this.lncCpuRamHistory.Text = "cartesianChart1";
             // 
-            // refreshTasksTimer
+            // refreshProcessTimer
             // 
-            this.refreshTasksTimer.Interval = 2000;
-            this.refreshTasksTimer.Tick += new System.EventHandler(this.refreshtimer_Tick);
+            this.refreshProcessTimer.Interval = 2000;
+            this.refreshProcessTimer.Tick += new System.EventHandler(this.refreshProcessTimer_Tick);
             // 
             // refreshCpuRamTimer
             // 
@@ -386,7 +386,7 @@
             this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MainView";
-            this.Text = "Task Viewer | © Nitsche - Weismann";
+            this.Text = "Process Viewer | © Nitsche - Weismann";
             this.Load += new System.EventHandler(this.MainView_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -405,8 +405,8 @@
 
         #endregion
 
-        private ListView livTasks;
-        private ColumnHeader cTaskName;
+        private ListView livProcesses;
+        private ColumnHeader cProcessName;
         private ColumnHeader cMemory;
         private ColumnHeader cPriority;
         private Label lblNumberOfProcesses;
@@ -417,11 +417,11 @@
         private Button btnDetails;
         private LiveCharts.WinForms.PieChart pieChart;
         private Button btnChangeSorting;
-        private RadioButton rbTaskCount;
+        private RadioButton rbProcessCount;
         private RadioButton rbThreads;
         private Label lblSorting;
         private RadioButton rbMemory;
-        private System.Windows.Forms.Timer refreshTasksTimer;
+        private System.Windows.Forms.Timer refreshProcessTimer;
         private RadioButton rbAutomatic;
         private Button btnUpdate;
         private GroupBox groupBox2;
