@@ -15,7 +15,7 @@ namespace Task_Manager
         private static PerformanceCounter ramCounter;
         #endregion
 
-        #region Construktor
+        #region Konstruktor
         public InternalProcesses()
         {
             _processes = Process.GetProcesses().ToList();   //get the processes how currently run
