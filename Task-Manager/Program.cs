@@ -20,7 +20,7 @@ namespace Task_Manager
             ApplicationConfiguration.Initialize();
 
             
-            InternalProcesses processes = new InternalProcesses();
+            ProcessList processes = new ProcessList();
 
             MainView mainView = new MainView();
 

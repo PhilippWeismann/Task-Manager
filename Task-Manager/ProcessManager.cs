@@ -10,16 +10,16 @@ namespace Task_Manager
 {
     internal class ProcessManager
     {
-        InternalProcesses _processes;   //Model
+        ProcessList _processes;   //Model
         List<int> _cpuHistory;  //Model
         List<int> _ramHistory;  //Model
         List<ProcessWithCount> _updatedProcesses;  //Model
 
         MainView _mainView; //View
 
-        public ProcessManager(MainView mainView, InternalProcesses processes)   //Konstructor
+        public ProcessManager(MainView mainView, ProcessList processes)   //Konstructor
         {
-            _processes = processes; //member _processes gets the value of parameter processes
+            _processes = processes; 
             _mainView = mainView; //member _mainView gets the value of parameter mainView
 
             //initialisation of CPU-history and RAM-history List
@@ -37,13 +37,13 @@ namespace Task_Manager
         #region Event-Methods
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
+            _updatedProcesses = _processes.CurrentProcesses;  //get the current processes
             _mainView.UpdateListView(_updatedProcesses);    //update Listview with the current processes
         }
 
         private void OnUpdatePieChartRequested(object sender, int numberOfSlices)
         {
-            _updatedProcesses = _processes.GetCurrentProcessesWithCount();  //get the current processes
+            _updatedProcesses = _processes.CurrentProcesses;  //get the current processes
             _mainView.UpdatePiechart(_updatedProcesses, numberOfSlices);    //update piechart with the current processes
         }
 
@@ -55,8 +55,8 @@ namespace Task_Manager
                 _ramHistory.RemoveAt(0);
             }
 
-            _cpuHistory.Add(InternalProcesses.GetCurrentCPUPercentage()); //Add the current CPU value
-            _ramHistory.Add(InternalProcesses.GetCurrentRAMPercentage()); //Add the current RAM value
+            _cpuHistory.Add(CpuRamPerformance.GetCurrentCPUPercentage()); //Add the current CPU value
+            _ramHistory.Add(CpuRamPerformance.GetCurrentRAMPercentage()); //Add the current RAM value
 
             List<List<int>> chartlist = new List<List<int>>();  //create a list with the two lists (cpuHistory and ramHistory)
             chartlist.Add(_cpuHistory);
