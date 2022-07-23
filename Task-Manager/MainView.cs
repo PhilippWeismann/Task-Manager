@@ -62,7 +62,7 @@ namespace Task_Manager
 
         }
 
-        #region public methods
+        #region Methods
         public void UpdatePiechart(List<ProcessWithCount> processes, int numberOfSlices) //method for updating the pie-chart
         {
             SeriesCollection series = new SeriesCollection(); //new SeriesCollection-Object gets initialized
@@ -145,13 +145,6 @@ namespace Task_Manager
                         
             lncCpuRamHistory.Series = series;   //show all lines in one chart
         }
-        #endregion
-
-        #region private methods
-        private void MainView_Load(object sender, EventArgs e)  //when the MainView is loaded then the current running Processes are shown in the ListView 
-        {
-            UpdateProcessesRequested?.Invoke(this, e);
-        }
 
         private void SortProcesses(List<ProcessWithCount> processes) //method to sort the processes-List
         {
@@ -175,8 +168,10 @@ namespace Task_Manager
                 processes.Reverse();
             }
         }
+        #endregion
 
-        private void btnUpdate_Click(object sender, EventArgs e)    //for manual uptdating
+        #region Event-Based Methods
+        private void MainView_Load(object sender, EventArgs e)  //when the MainView is loaded then the current running Processes are shown in the ListView 
         {
             UpdateProcessesRequested?.Invoke(this, e);
         }
@@ -194,27 +189,6 @@ namespace Task_Manager
             {
                 System.Windows.Forms.MessageBox.Show("Please select any Process in the List to get detailed Information", "No Process selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void btnChangeSorting_Click(object sender, EventArgs e) //changes sorting direction and ´text of label
-        {
-            if (!reverse)
-            {
-                lblSorting.Text = "Sorting: descending";
-                reverse = true;
-            }
-            else if (reverse)
-            {
-                lblSorting.Text = "Sorting: ascending";
-                reverse = false;
-            }
-
-            UpdateProcessesRequested?.Invoke(this, e);
-        }
-
-        private void refreshProcessTimer_Tick(object sender, EventArgs e)  //if the refreshProcessTimer is running -> every 2 seconds the listView is updated
-        {
-            UpdateProcessesRequested?.Invoke(this, e);
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) //when the selected tab changes
@@ -239,7 +213,12 @@ namespace Task_Manager
             }
         }
 
-        private void rbAutomatic_CheckedChanged(object sender, EventArgs e) 
+        private void btnUpdate_Click(object sender, EventArgs e)    //for manual uptdating
+        {
+            UpdateProcessesRequested?.Invoke(this, e);
+        }
+
+        private void rbAutomatic_CheckedChanged(object sender, EventArgs e) //Update mode is changed
         {
             if (rbAutomatic.Checked) //If automatic-Update is selected -> Timer is started, Label is changed and Update-Button is invisible
             {
@@ -257,36 +236,52 @@ namespace Task_Manager
 
         }
 
+        //if any Radio button is Clicked -> List view is sorted (Event for updating ListView is fired)
+        private void rbThreads_Click(object sender, EventArgs e)    //criteria for sorting
+        {
+            UpdateProcessesRequested?.Invoke(this, e);
+        }
+
+        private void rbMemory_Click(object sender, EventArgs e)     //criteria for sorting
+        {
+            UpdateProcessesRequested?.Invoke(this, e);
+        }
+
+        private void rbProcessCount_Click(object sender, EventArgs e)   //criteria for sorting
+        {
+            UpdateProcessesRequested?.Invoke(this, e);
+        }
+
+        private void btnChangeSorting_Click(object sender, EventArgs e) //changes sorting direction and text of label
+        {
+            if (!reverse)
+            {
+                lblSorting.Text = "Sorting: descending";
+                reverse = true;
+            }
+            else if (reverse)
+            {
+                lblSorting.Text = "Sorting: ascending";
+                reverse = false;
+            }
+
+            UpdateProcessesRequested?.Invoke(this, e);
+        }
+
         private void refreshCpuRamTimer_Tick(object sender, EventArgs e)
         {
             UpdateCpuRamRequested?.Invoke(this, e); //fires event to refresh the line Chart
-        }
+        } // updates the Cpu/Ram-Chart every second
 
-        //if any Radio button is Clicked -> List view is sorted (Event for updating ListView is fired)
-        private void rbThreads_Click(object sender, EventArgs e)    //for sorting
+        private void refreshProcessTimer_Tick(object sender, EventArgs e)  //if the refreshProcessTimer is running -> every 2 seconds the listView is updated
         {
             UpdateProcessesRequested?.Invoke(this, e);
         }
-
-        private void rbMemory_Click(object sender, EventArgs e)     //for sorting
-        {
-            UpdateProcessesRequested?.Invoke(this, e);
-        }
-
-        private void rbProcessCount_Click(object sender, EventArgs e)   //for sorting
-        {
-            UpdateProcessesRequested?.Invoke(this, e);
-        }
-
-
 
         private void tbSlices_Scroll(object sender, EventArgs e) //If the value of the TaskBar changed the Pie chart is updated with the current value
         {
             UpdatePieChartRequested(this, tbSlices.Value);
         }
-
-
-
         #endregion
 
 

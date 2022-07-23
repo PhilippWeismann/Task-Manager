@@ -9,11 +9,11 @@ namespace Task_Manager
 {
     public class ProcessList
     {
-        private List<ProcessWithCount> _currentProcesses = new List<ProcessWithCount>();
+        private List<ProcessWithCount> _currentProcesses = new List<ProcessWithCount>(); //Main-Model
 
         public List<ProcessWithCount> CurrentProcesses
         { 
-            get 
+            get //If Property is interrrogated -> _currentProcesses is updated
             {
                 _currentProcesses = GetCurrentProcessListWithCount();
                 return _currentProcesses;
@@ -66,7 +66,7 @@ namespace Task_Manager
 
     }
 
-    #region classes to compare
+    #region classes to compare ProcessWithCount
     public class SortByMemorySize : IComparer<ProcessWithCount> //to compare the MemoryUsage of two processes
     {
         public int Compare(ProcessWithCount x, ProcessWithCount y)

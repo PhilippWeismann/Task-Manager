@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Task_Manager
 {
-    public static class CpuRamPerformance
+    public static class CpuRamPerformance // static class -> no object must be initialized
     {
 
-        #region Settings to get Ram-usage
+        #region Settings to get Ram-usage (online source)
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GlobalMemoryStatusEx(ref MEMORY_INFO mi);
@@ -33,7 +33,7 @@ namespace Task_Manager
         #endregion
 
         #region Members
-        private static PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+        private static PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"); //new Performance Counter Object gets initialized for CPU measurement
         #endregion
 
 
@@ -44,10 +44,11 @@ namespace Task_Manager
         }
 
 
-        public static int GetCurrentRAMPercentage()
+        public static int GetCurrentRAMPercentage() //get RAM usage in int
         {
-            MEMORY_INFO mi = GetMemoryStatus();
+            MEMORY_INFO mi = GetMemoryStatus(); //get the current memory status from struct MEMORY_INFO (online source)
 
+            //Calculate percentage of used memory
             ulong totalRam = mi.ullTotalPhys;
             ulong usedRam = (mi.ullTotalPhys - mi.ullAvailPhys);
 
@@ -55,7 +56,7 @@ namespace Task_Manager
             return Convert.ToInt16(portion * 100);
         }
 
-        public static MEMORY_INFO GetMemoryStatus()
+        public static MEMORY_INFO GetMemoryStatus() //get the current memory status from struct MEMORY_INFO (online source)
         {
             MEMORY_INFO mi = new MEMORY_INFO();
             mi.dwLength = (uint)System.Runtime.InteropServices.Marshal.SizeOf(mi);

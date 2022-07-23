@@ -10,10 +10,9 @@ namespace Task_Manager
 {
     internal class ProcessManager
     {
-        ProcessList _processes;   //Model
-        List<int> _cpuHistory;  //Model
-        List<int> _ramHistory;  //Model
-        List<ProcessWithCount> _updatedProcesses;  //Model
+        ProcessList _processes; //Model
+        List<int> _cpuHistory; //internal Model
+        List<int> _ramHistory; //internalModel
 
         MainView _mainView; //View
 
@@ -37,14 +36,12 @@ namespace Task_Manager
         #region Event-Methods
         private void OnUpdateTasksRequested(object sender, EventArgs e)
         {
-            _updatedProcesses = _processes.CurrentProcesses;  //get the current processes
-            _mainView.UpdateListView(_updatedProcesses);    //update Listview with the current processes
+            _mainView.UpdateListView(_processes.CurrentProcesses);    //update Listview with the current processes
         }
 
         private void OnUpdatePieChartRequested(object sender, int numberOfSlices)
         {
-            _updatedProcesses = _processes.CurrentProcesses;  //get the current processes
-            _mainView.UpdatePiechart(_updatedProcesses, numberOfSlices);    //update piechart with the current processes
+            _mainView.UpdatePiechart(_processes.CurrentProcesses, numberOfSlices);    //update piechart with the current processes
         }
 
         private void OnUpdateCpuRamRequested(object sender, EventArgs e)
