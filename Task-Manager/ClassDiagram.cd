@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Views">
+    <Position X="10.788" Y="1.51" Height="0.517" Width="4.192" />
+  </Comment>
+  <Comment CommentText="Presenter">
+    <Position X="7.714" Y="1.511" Height="0.517" Width="2.055" />
+  </Comment>
+  <Comment CommentText="Models">
+    <Position X="1.248" Y="1.516" Height="0.517" Width="5.522" />
+  </Comment>
+  <Comment CommentText="Program">
+    <Position X="7.696" Y="5.764" Height="0.517" Width="2.055" />
+  </Comment>
+  <Comment CommentText="Comparison-Classes for ProcessWithCount">
+    <Position X="4.25" Y="5.25" Height="0.517" Width="1.467" />
+  </Comment>
+  <Class Name="Task_Manager.CpuRamPerformance">
+    <Position X="4.25" Y="2.25" Width="2.5" />
+    <NestedTypes>
+      <Struct Name="Task_Manager.CpuRamPerformance.MEMORY_INFO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CpuRamPerformance.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIAAAAQAAAAAAAAAAAAgAAQAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>CpuRamPerformance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Task_Manager.DetailView">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAADCAABAIAACAAAACAAIAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>DetailView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Task_Manager.MainView">
+    <Position X="12.5" Y="2.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABCEihSCRigCZI1QAADgAAAiGUIAAAoAACAKtJRBACA=</HashCode>
+      <FileName>MainView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Task_Manager.ProcessManager">
+    <Position X="7.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAFAAAAAAAAAAAAUAAAgAAAgAAAA=</HashCode>
+      <FileName>ProcessManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Task_Manager.ProcessList">
+    <Position X="1.25" Y="2.25" Width="2.5" />
+    <AssociationLine Name="CurrentProcesses" Type="Task_Manager.ProcessWithCount">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.075" Y="0.286" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ProcessList.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CurrentProcesses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Task_Manager.SortByMemorySize" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ProcessList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Task_Manager.SortByProcessCount" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ProcessList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Task_Manager.SortByThreads" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ProcessList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Task_Manager.ProcessWithCount">
+    <Position X="1.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAIAAgAABAQAAAEAACAEAEAAEAAAAAA=</HashCode>
+      <FileName>ProcessList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Task_Manager.Program">
+    <Position X="7.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
