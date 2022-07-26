@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Views">
-    <Position X="10.788" Y="1.51" Height="0.517" Width="4.192" />
+    <Position X="10.471" Y="1.51" Height="0.517" Width="4.259" />
   </Comment>
   <Comment CommentText="Presenter">
-    <Position X="7.714" Y="1.511" Height="0.517" Width="2.055" />
+    <Position X="7.464" Y="1.511" Height="0.517" Width="2.263" />
   </Comment>
   <Comment CommentText="Models">
     <Position X="1.248" Y="1.516" Height="0.517" Width="5.522" />
   </Comment>
   <Comment CommentText="Program">
-    <Position X="7.696" Y="5.764" Height="0.517" Width="2.055" />
+    <Position X="7.446" Y="5.764" Height="0.517" Width="2.055" />
   </Comment>
   <Comment CommentText="Comparison-Classes for ProcessWithCount">
     <Position X="4.25" Y="5.25" Height="0.517" Width="1.467" />
@@ -30,7 +30,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Task_Manager.DetailView">
-    <Position X="10.75" Y="2.25" Width="1.5" />
+    <Position X="10.5" Y="2.25" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -40,7 +40,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Task_Manager.MainView">
-    <Position X="12.5" Y="2.25" Width="2.5" />
+    <Position X="12.25" Y="2.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -50,7 +50,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Task_Manager.ProcessManager">
-    <Position X="7.75" Y="2.25" Width="2" />
+    <Position X="7.5" Y="2.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAABAAFAAAAAAAAAAAAUAAAgAAAgAAAA=</HashCode>
       <FileName>ProcessManager.cs</FileName>
@@ -103,7 +103,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Task_Manager.Program">
-    <Position X="7.75" Y="6.5" Width="2" />
+    <Position X="7.5" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
